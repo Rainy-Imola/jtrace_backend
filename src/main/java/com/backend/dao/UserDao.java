@@ -3,6 +3,11 @@ package com.backend.dao;
 import com.backend.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserDao extends JpaRepository<User, Integer> {
-    User findByUsername(String name);
+import java.util.List;
+
+public interface UserDao {
+    User checkUser(String username, String password);
+    User addUser(User user);
+    List<User> getUsers();
+    User findByName(String username);
 }
