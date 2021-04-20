@@ -1,7 +1,6 @@
 package com.backend.dao;
 
 import com.backend.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
