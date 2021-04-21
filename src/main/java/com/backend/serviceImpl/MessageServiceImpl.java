@@ -28,4 +28,16 @@ public class MessageServiceImpl implements MessageService {
     public Message releaseMessage(Message message) {
         return messageDao.releaseMessage(message);
     }
+
+    @Override
+    public Message updateMessage(Message message) { return messageDao.updateMessage(message); }
+
+    @Override
+    public void deleteMessage(Integer id) { messageDao.deleteMessage(id); }
+
+    @Override
+    public Message findById(Integer id) {
+        return messageDao.findById(id);
+    }
+
 }
