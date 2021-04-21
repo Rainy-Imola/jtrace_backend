@@ -55,9 +55,28 @@ public class MessageController {
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
     }
 
-    /*
-     * Todo List:
-     * update message
-     * delete message
-     */
+    @PutMapping("/{id}")
+    public Msg updateMessage(@PathVariable Integer id, @RequestBody JSONObject jsonObject) {
+        Message message = messageService.findById(id);
+        String content = jsonObject.getString("content");
+        Date date = new Date();
+
+        message.setContent(content);
+        message.setDate(date);
+
+        messageService.updateMessage(message);
+
+        Logger logger = Logger.getLogger(MessageController.class);
+        logger.info("Path: /msgboard/" + id + ", status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
+    }
+
+    @DeleteMapping("/{id}")
+    public Msg deleteMessage(@PathVariable Integer id) {
+        messageService.deleteMessage(id);
+
+        Logger logger = Logger.getLogger(MessageController.class);
+        logger.info("Path: /msgboard/" + id + ", status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
+    }
 }

@@ -5,6 +5,7 @@ import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
 import com.backend.utils.sessionUtils.SessionUtils;
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // Login
     @PostMapping("/login")
     public Msg login(@RequestBody JSONObject object) {
         String username = object.getString("username");
@@ -43,9 +45,11 @@ public class UserController {
         }
     }
 
+    // Get all users
     @GetMapping("/getUsers")
     public List<User> getUsers() { return userService.getUsers(); }
 
+    // Register
     @PostMapping("/register")
     public Msg register(@RequestBody JSONObject jsonObject) {
         String username = jsonObject.getString("username");
@@ -68,6 +72,31 @@ public class UserController {
             logger.error("Path: /register, status: fail, username: " + username);
             return MsgUtils.makeMsg(MsgUtils.REGISTER_ERROR, MsgUtils.REGISTER_ERROR_MSG);
         }
+    }
+
+    // Get user profile
+    @GetMapping("/{username}/info")
+    public Msg userInfo(@PathVariable String username) {
+        User user = userService.findByName(username);
+        JSONObject data = JSONObject.fromObject(user);
+
+        Logger logger = Logger.getLogger(UserController.class);
+        logger.info("Path: /" + username + "/info, status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
+    }
+
+    // Update password
+    @PostMapping("/{username}/info")
+    public Msg updatePassword(@PathVariable String username, @RequestBody JSONObject jsonObject) {
+        User user = userService.findByName(username);
+        String password = jsonObject.getString("password");
+
+        user.setPassword(password);
+        userService.addUser(user);
+
+        Logger logger = Logger.getLogger(UserController.class);
+        logger.info("Path: /" + username + "/info, status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
     }
 
     /*

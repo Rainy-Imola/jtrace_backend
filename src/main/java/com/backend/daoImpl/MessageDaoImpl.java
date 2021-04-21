@@ -28,4 +28,23 @@ public class MessageDaoImpl implements MessageDao {
     public Message releaseMessage(Message message) {
         return messageRepository.saveAndFlush(message);
     }
+
+    @Override
+    public Message updateMessage(Message message) {
+        return messageRepository.saveAndFlush(message);
+    }
+
+    @Override
+    public void deleteMessage(Integer id) {
+        messageRepository.deleteById(id);
+    }
+
+    @Override
+    public Message findById(Integer id) {
+        if (messageRepository.findById(id).isPresent()) {
+            return messageRepository.findById(id).get();
+        } else {
+            return null;
+        }
+    }
 }
