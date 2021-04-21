@@ -1,7 +1,13 @@
 package com.backend.controller;
 
-import com.backend.dao.MessageDao;
 import com.backend.entity.Message;
+import com.backend.entity.User;
+import com.backend.service.MessageService;
+import com.backend.service.UserService;
+import com.backend.utils.msgUtils.Msg;
+import com.backend.utils.msgUtils.MsgUtils;
+import net.sf.json.JSONObject;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,47 +16,48 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/msgboard")
-public class messageController {
+public class MessageController {
 
     @Autowired
-    private MessageDao messageDao;
+    private MessageService messageService;
 
-    // create message
-    @PostMapping("/")
-    public String postMessage(@RequestBody Message message) {
-        message.setDate(new Date());
-        messageDao.save(message);
-        return "success";
-    }
+    @Autowired
+    private UserService userService;
 
-    // get all messages
-    @GetMapping("/")
-    public List<Message> getAllMessage() {
-        List<Message> messages = messageDao.findAll();
-        return messages;
+    // get messages by author
+    @GetMapping("/{author}")
+    public List<Message> findByAuthor(@PathVariable String author) {
+        return messageService.findByAuthor(userService.findByName(author));
     }
 
     // get message
-    @GetMapping("/{id}")
-    public Message getMessage(@PathVariable Integer id) {
-        Message message = messageDao.findById(id).get();
-        return message;
+    @GetMapping("/")
+    public List<Message> getMessages() {
+        return messageService.getMessages();
     }
 
-    // delete message
-    @DeleteMapping("/{id}")
-    public String deleteMessage(@PathVariable Integer id) {
-        messageDao.deleteById(id);
-        return "success";
+    // release message
+    @PostMapping("/release")
+    public Msg releaseMessage(@RequestBody JSONObject jsonObject) {
+        User author = userService.findByName(jsonObject.getString("author"));
+        String content = jsonObject.getString("content");
+        Date date = new Date();
+
+        Message message = new Message();
+        message.setAuthor(author);
+        message.setContent(content);
+        message.setDate(date);
+
+        messageService.releaseMessage(message);
+
+        Logger logger = Logger.getLogger(MessageController.class);
+        logger.info("Path: /release, status: success, author: " + author);
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
     }
 
-    // update message
-    @PutMapping("/{id}")
-    public Message updateMessage(@PathVariable Integer id, @RequestBody Message msg) {
-        Message message = messageDao.findById(id).get();
-        message.setMessage(msg.getMessage());
-        message.setDate(new Date());
-        messageDao.save(message);
-        return message;
-    }
+    /*
+     * Todo List:
+     * update message
+     * delete message
+     */
 }

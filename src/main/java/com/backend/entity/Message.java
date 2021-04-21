@@ -19,14 +19,14 @@ public class Message {
     private Integer id;
 
     @ManyToOne
-    private User user;
-    private String message;
+    private User author;
+    private String content;
     private Date date;
 
-    public Message(Integer id, User user, String message, Date date) {
+    public Message(Integer id, User author, String message, Date date) {
         this.id = id;
-        this.user = user;
-        this.message = message;
+        this.author = author;
+        this.content = message;
         this.date = date;
     }
 }
