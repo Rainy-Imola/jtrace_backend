@@ -6,10 +6,12 @@ import com.backend.service.MessageService;
 import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
 
 import java.util.Date;
 import java.util.List;
@@ -26,8 +28,21 @@ public class MessageController {
 
     // get messages by author
     @GetMapping("/{author}")
-    public List<Message> findByAuthor(@PathVariable String author) {
-        return messageService.findByAuthor(userService.findByName(author));
+    public Msg findByAuthor(@PathVariable String author) {
+        User user = userService.findByName(author);
+
+        Logger logger = Logger.getLogger(MessageController.class);
+
+        if (user != null) {
+            List<Message> data = messageService.findByAuthor(userService.findByName(author));
+            JSONObject jsonObject = JSONObject.fromObject(data);
+
+            logger.info("Path: /msgboard/" + author + ", status: success");
+            return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, jsonObject);
+        } else {
+            logger.error("Path: /msgboard/" + author + ", status: fail!");
+            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
+        }
     }
 
     // get message
