@@ -1,10 +1,10 @@
-package com.backend.dao;
+package com.backend.service;
 
 import com.backend.entity.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserService {
     User checkUser(String username, String password);
     User addUser(User user);
     List<User> getUsers();
