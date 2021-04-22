@@ -98,9 +98,4 @@ public class UserController {
         logger.info("Path: /" + username + "/info, status: success");
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
     }
-
-    /*
-     * Todo List:
-     * Update password
-     */
 }
