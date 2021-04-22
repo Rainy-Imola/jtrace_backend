@@ -3,6 +3,7 @@ package com.backend.daoImpl;
 import com.backend.dao.PictureDao;
 import com.backend.entity.Picture;
 import com.backend.repository.mongo.PictureRepository;
+import com.backend.utils.mongoUtils.MongoAutoIdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Repository;
 public class PictureDaoImpl implements PictureDao {
     @Autowired
     PictureRepository pictureRepository;
+
+    @Autowired
+    MongoAutoIdUtils mongoAutoIdUtils;
 
     @Override
     public Picture findById(Integer id) {
@@ -24,7 +28,7 @@ public class PictureDaoImpl implements PictureDao {
     public void addPicture(String address) {
         Picture picture = new Picture();
         picture.setAddress(address);
-        picture.setId(1);
+        picture.setId(mongoAutoIdUtils.getNextSequence("picture"));
         pictureRepository.save(picture);
     }
 }
