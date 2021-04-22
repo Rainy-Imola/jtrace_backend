@@ -1,4 +1,4 @@
-package com.backend.repository;
+package com.backend.repository.jpa;
 
 import com.backend.entity.Message;
 import com.backend.entity.User;
