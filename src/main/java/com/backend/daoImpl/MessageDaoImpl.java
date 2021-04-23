@@ -3,7 +3,7 @@ package com.backend.daoImpl;
 import com.backend.dao.MessageDao;
 import com.backend.entity.Message;
 import com.backend.entity.User;
-import com.backend.repository.MessageRepository;
+import com.backend.repository.jpa.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
