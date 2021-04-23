@@ -26,12 +26,12 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public Message releaseMessage(Message message) {
-        return messageRepository.saveAndFlush(message);
+        return messageRepository.save(message);
     }
 
     @Override
     public Message updateMessage(Message message) {
-        return messageRepository.saveAndFlush(message);
+        return messageRepository.save(message);
     }
 
     @Override

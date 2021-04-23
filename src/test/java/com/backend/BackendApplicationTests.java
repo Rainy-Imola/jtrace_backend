@@ -13,28 +13,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class BackendApplicationTests {
-    @Autowired
-    MessageService messageService;
 
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    PictureService pictureService;
-
-    @Test
-    public void contextLoads() {
-    }
-
-    @Test
-    public void userTest() throws Exception {
-    }
-
-    @Test
-    public void messageTest() throws Exception {
-    }
-
-    @Test
-    public void pictureTest() throws Exception {
-    }
 }

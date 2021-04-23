@@ -14,6 +14,4 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 
     @Query("select m from Message m")
     List<Message> getMessages();
-
-
 }

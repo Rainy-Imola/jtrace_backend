@@ -17,7 +17,7 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public void addPicture(String address) {
-        pictureDao.addPicture(address);
+    public Integer addPicture(String address) {
+        return pictureDao.addPicture(address);
     }
 }
