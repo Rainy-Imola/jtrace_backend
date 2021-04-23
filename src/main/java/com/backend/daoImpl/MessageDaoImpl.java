@@ -3,7 +3,7 @@ package com.backend.daoImpl;
 import com.backend.dao.MessageDao;
 import com.backend.entity.Message;
 import com.backend.entity.User;
-import com.backend.repository.MessageRepository;
+import com.backend.repository.jpa.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -26,12 +26,12 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public Message releaseMessage(Message message) {
-        return messageRepository.saveAndFlush(message);
+        return messageRepository.save(message);
     }
 
     @Override
     public Message updateMessage(Message message) {
-        return messageRepository.saveAndFlush(message);
+        return messageRepository.save(message);
     }
 
     @Override

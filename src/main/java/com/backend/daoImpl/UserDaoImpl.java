@@ -2,7 +2,7 @@ package com.backend.daoImpl;
 
 import com.backend.dao.UserDao;
 import com.backend.entity.User;
-import com.backend.repository.UserRepository;
+import com.backend.repository.jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
