@@ -1,8 +1,10 @@
 package com.backend.controller;
 
 import com.backend.entity.Message;
+import com.backend.entity.Picture;
 import com.backend.entity.User;
 import com.backend.service.MessageService;
+import com.backend.service.PictureService;
 import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
@@ -23,6 +25,9 @@ public class MessageController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PictureService pictureService;
 
     // get messages by author
     @GetMapping("/{author}")
@@ -54,12 +59,18 @@ public class MessageController {
     public Msg releaseMessage(@RequestBody JSONObject jsonObject) {
         User author = userService.findByName(jsonObject.getString("author"));
         String content = jsonObject.getString("content");
+        String picture = jsonObject.getString("picture");
         Date date = new Date();
+        Integer picture_id = 0;
 
         Message message = new Message();
         message.setAuthor(author);
         message.setContent(content);
         message.setDate(date);
+        if (picture != null) {
+            picture_id = pictureService.addPicture(picture);
+        }
+        message.setPicture_id(picture_id);
 
         messageService.releaseMessage(message);
 

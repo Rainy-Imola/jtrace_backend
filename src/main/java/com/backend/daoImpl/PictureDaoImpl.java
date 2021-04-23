@@ -25,10 +25,12 @@ public class PictureDaoImpl implements PictureDao {
     }
 
     @Override
-    public void addPicture(String address) {
+    public Integer addPicture(String address) {
         Picture picture = new Picture();
         picture.setAddress(address);
         picture.setId(mongoAutoIdUtils.getNextSequence("picture"));
         pictureRepository.save(picture);
+
+        return picture.getId();
     }
 }
