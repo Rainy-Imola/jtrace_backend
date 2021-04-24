@@ -6,11 +6,13 @@ import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
 import com.backend.utils.sessionUtils.SessionUtils;
 import net.sf.json.JSON;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,7 +38,10 @@ public class UserController {
             jsonObject.put("username", auth.getUsername());
             SessionUtils.setSession(jsonObject);
 
-            JSONObject data = JSONObject.fromObject(auth);
+            List<User> array = new ArrayList<>();
+            array.add(auth);
+
+            JSONArray data = JSONArray.fromObject(array);
             logger.info("Path: /login, status: success, username: " + username);
             return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.LOGIN_SUCCESS_MSG, data);
         } else {
@@ -78,7 +83,10 @@ public class UserController {
     @GetMapping("/{username}/info")
     public Msg userInfo(@PathVariable String username) {
         User user = userService.findByName(username);
-        JSONObject data = JSONObject.fromObject(user);
+
+        List<User> array = new ArrayList<>();
+        array.add(user);
+        JSONArray data = JSONArray.fromObject(array);
 
         Logger logger = Logger.getLogger(UserController.class);
         logger.info("Path: /" + username + "/info, status: success");

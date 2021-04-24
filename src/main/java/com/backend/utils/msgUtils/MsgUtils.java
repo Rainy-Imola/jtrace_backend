@@ -1,5 +1,6 @@
 package com.backend.utils.msgUtils;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class MsgUtils {
@@ -19,7 +20,7 @@ public class MsgUtils {
     public static final String REGISTER_ERROR_MSG = "Username has been taken!";
     public static final String REGISTER_SUCCESS_MSG = "Register Success!";
 
-    public static Msg makeMsg(Integer status, String msg, JSONObject data){
+    public static Msg makeMsg(Integer status, String msg, JSONArray data){
         return new Msg(status, msg, data);
     }
 

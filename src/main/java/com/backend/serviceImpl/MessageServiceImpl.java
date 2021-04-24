@@ -2,7 +2,6 @@ package com.backend.serviceImpl;
 
 import com.backend.dao.MessageDao;
 import com.backend.entity.Message;
-import com.backend.entity.User;
 import com.backend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<Message> findByAuthor(User author) {
+    public List<Message> findByAuthor(Integer author) {
         return messageDao.findByAuthor(author);
     }
 

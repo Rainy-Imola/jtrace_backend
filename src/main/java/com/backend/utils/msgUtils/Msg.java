@@ -1,13 +1,14 @@
 package com.backend.utils.msgUtils;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class Msg {
     private Integer status;
     private String msg;
-    private JSONObject data;
+    private JSONArray data;
 
-    Msg(Integer status, String msg, JSONObject data) {
+    Msg(Integer status, String msg, JSONArray data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
@@ -35,11 +36,11 @@ public class Msg {
         this.msg = msg;
     }
 
-    public JSONObject getData() {
+    public JSONArray getData() {
         return data;
     }
 
-    public void setData(JSONObject data) {
+    public void setData(JSONArray data) {
         this.data = data;
     }
 }
