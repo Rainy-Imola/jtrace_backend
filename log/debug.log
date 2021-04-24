@@ -11,3 +11,6 @@
 2021-04-23 21:41:55  [ http-nio-8000-exec-8:1605694 ] - [ INFO ]  Path: /register, status: success, username: test
 2021-04-23 21:42:21  [ http-nio-8000-exec-7:1631140 ] - [ INFO ]  Path: /login, status: success, username: test
 2021-04-23 21:43:23  [ http-nio-8000-exec-1:1692853 ] - [ INFO ]  Path: /snowfall/info, status: success
+2021-04-24 11:03:41  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/snowfall, status: success
+2021-04-24 11:04:18  [ http-nio-8000-exec-3:36947 ] - [ INFO ]  Path: /snowfall/info, status: success
+2021-04-24 11:05:26  [ http-nio-8000-exec-4:104949 ] - [ INFO ]  Path: /login, status: success, username: snowfall
