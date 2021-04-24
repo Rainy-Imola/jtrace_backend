@@ -2,8 +2,8 @@ package com.backend.daoImpl;
 
 import com.backend.dao.MessageDao;
 import com.backend.entity.Message;
-import com.backend.entity.User;
-import com.backend.repository.jpa.MessageRepository;
+import com.backend.repository.mongo.MessageRepository;
+import com.backend.utils.mongoUtils.MongoAutoIdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,18 +14,22 @@ public class MessageDaoImpl implements MessageDao {
     @Autowired
     MessageRepository messageRepository;
 
+    @Autowired
+    MongoAutoIdUtils mongoAutoIdUtils;
+
     @Override
     public List<Message> getMessages() {
-        return messageRepository.getMessages();
+        return messageRepository.findAll();
     }
 
     @Override
-    public List<Message> findByAuthor(User author) {
+    public List<Message> findByAuthor(Integer author) {
         return messageRepository.findByAuthor(author);
     }
 
     @Override
     public Message releaseMessage(Message message) {
+        message.setId(mongoAutoIdUtils.getNextSequence("messsage"));
         return messageRepository.save(message);
     }
 

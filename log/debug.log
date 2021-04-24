@@ -1,1 +1,13 @@
 2021-04-23 19:16:27  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /register, status: success, username: snowfall
+2021-04-23 20:08:32  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /release, status: success, author: 3
+2021-04-23 20:10:03  [ http-nio-8000-exec-4:90152 ] - [ INFO ]  Path: /release, status: success, author: 3
+2021-04-23 20:13:31  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /release, status: success, author: 3
+2021-04-23 20:20:08  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /release, status: success, author: 3
+2021-04-23 21:13:22  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/snowfall, status: success
+2021-04-23 21:15:10  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/1, status: success
+2021-04-23 21:15:26  [ http-nio-8000-exec-3:16435 ] - [ INFO ]  Path: /msgboard/1, status: success
+2021-04-23 21:16:01  [ http-nio-8000-exec-2:51321 ] - [ INFO ]  Path: /release, status: success, author: 3
+2021-04-23 21:40:34  [ http-nio-8000-exec-4:1524301 ] - [ INFO ]  Path: /release, status: success, author: 3
+2021-04-23 21:41:55  [ http-nio-8000-exec-8:1605694 ] - [ INFO ]  Path: /register, status: success, username: test
+2021-04-23 21:42:21  [ http-nio-8000-exec-7:1631140 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-04-23 21:43:23  [ http-nio-8000-exec-1:1692853 ] - [ INFO ]  Path: /snowfall/info, status: success

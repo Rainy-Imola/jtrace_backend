@@ -1,13 +1,12 @@
 package com.backend.controller;
 
 import com.backend.entity.Message;
-import com.backend.entity.Picture;
 import com.backend.entity.User;
 import com.backend.service.MessageService;
-import com.backend.service.PictureService;
 import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,22 +25,20 @@ public class MessageController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private PictureService pictureService;
-
     // get messages by author
     @GetMapping("/{author}")
     public Msg findByAuthor(@PathVariable String author) {
-        User user = userService.findByName(author);
-
         Logger logger = Logger.getLogger(MessageController.class);
 
+        User user = userService.findByName(author);
+
         if (user != null) {
-            List<Message> data = messageService.findByAuthor(userService.findByName(author));
-            JSONObject jsonObject = JSONObject.fromObject(data);
+            List<Message> data = messageService.findByAuthor(user.getId());
+            System.out.println(data);
+            JSONArray jsonArray = JSONArray.fromObject(data);
 
             logger.info("Path: /msgboard/" + author + ", status: success");
-            return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, jsonObject);
+            return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, jsonArray); // Todo
         } else {
             logger.error("Path: /msgboard/" + author + ", status: fail!");
             return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
@@ -57,20 +54,18 @@ public class MessageController {
     // release message
     @PostMapping("/release")
     public Msg releaseMessage(@RequestBody JSONObject jsonObject) {
-        User author = userService.findByName(jsonObject.getString("author"));
+        Integer author = jsonObject.getInt("author");
         String content = jsonObject.getString("content");
-        String picture = jsonObject.getString("picture");
+        String picture = (String) jsonObject.get("picture");
         Date date = new Date();
-        Integer picture_id = 0;
 
         Message message = new Message();
         message.setAuthor(author);
         message.setContent(content);
         message.setDate(date);
         if (picture != null) {
-            picture_id = pictureService.addPicture(picture);
+            message.setPicture(picture);
         }
-        message.setPicture_id(picture_id);
 
         messageService.releaseMessage(message);
 
@@ -83,10 +78,14 @@ public class MessageController {
     public Msg updateMessage(@PathVariable Integer id, @RequestBody JSONObject jsonObject) {
         Message message = messageService.findById(id);
         String content = jsonObject.getString("content");
+        String picture = (String) jsonObject.get("picture");
         Date date = new Date();
 
         message.setContent(content);
         message.setDate(date);
+        if (picture != null) {
+            message.setPicture(picture);
+        }
 
         messageService.updateMessage(message);
 

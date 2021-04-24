@@ -15,25 +15,24 @@ public class Message {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne
-    private User author;
+    private Integer author;
     private String content;
     private Date date;
-    private Integer picture_id;
+    private String picture;
 
-    public Message(Integer id, User author, String message, Date date) {
+    public Message(Integer id, Integer author, String message, Date date) {
         this.id = id;
         this.author = author;
         this.content = message;
         this.date = date;
-        this.picture_id = null;
+        this.picture = null;
     }
 
-    public Message(Integer id, User author, String message, Date date, Integer picture_id) {
+    public Message(Integer id, Integer author, String message, Date date, String picture) {
         this.id = id;
         this.author = author;
         this.content = message;
         this.date = date;
-        this.picture_id = picture_id;
+        this.picture = picture;
     }
 }
