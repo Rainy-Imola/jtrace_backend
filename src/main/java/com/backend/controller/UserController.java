@@ -94,12 +94,28 @@ public class UserController {
     }
 
     // Update password
-    @PostMapping("/{username}/info")
+    @PostMapping("/{username}/password")
     public Msg updatePassword(@PathVariable String username, @RequestBody JSONObject jsonObject) {
         User user = userService.findByName(username);
         String password = jsonObject.getString("password");
 
         user.setPassword(password);
+        userService.addUser(user);
+
+        Logger logger = Logger.getLogger(UserController.class);
+        logger.info("Path: /" + username + "/password, status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
+    }
+
+    // Update information
+    @PostMapping("/{username}/info")
+    public Msg updateInfo(@PathVariable String username, @RequestBody JSONObject jsonObject) {
+        User user = userService.findByName(username);
+        String hobby = jsonObject.getString("hobby");
+        String constellation = jsonObject.getString("constellation");
+
+        user.setHobby(hobby);
+        user.setConstellation(constellation);
         userService.addUser(user);
 
         Logger logger = Logger.getLogger(UserController.class);
