@@ -20,18 +20,18 @@ public class Message {
     private Date date;
     private String picture;
 
-    public Message(Integer id, Integer author, String message, Date date) {
+    public Message(Integer id, Integer author, String content, Date date) {
         this.id = id;
         this.author = author;
-        this.content = message;
+        this.content = content;
         this.date = date;
         this.picture = null;
     }
 
-    public Message(Integer id, Integer author, String message, Date date, String picture) {
+    public Message(Integer id, Integer author, String content, Date date, String picture) {
         this.id = id;
         this.author = author;
-        this.content = message;
+        this.content = content;
         this.date = date;
         this.picture = picture;
     }
