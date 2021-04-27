@@ -89,7 +89,11 @@
             <artifactId>spring-data-mongodb</artifactId>
             <version>3.1.8</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.louislivi.fastdep</groupId>
+            <artifactId>fastdep-shiro-jwt</artifactId>
+            <version>1.0.5</version>
+        </dependency>
     </dependencies>
 
     <build>
