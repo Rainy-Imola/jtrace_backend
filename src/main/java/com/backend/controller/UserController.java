@@ -111,7 +111,7 @@ public class UserController {
     @PostMapping("/{username}/info")
     public Msg updateInfo(@PathVariable String username, @RequestBody JSONObject jsonObject) {
         User user = userService.findByName(username);
-        String hobby = jsonObject.getString("hobby");
+        List<String> hobby = (List<String>) jsonObject.get("hobby");
         String constellation = jsonObject.getString("constellation");
 
         user.setHobby(hobby);
