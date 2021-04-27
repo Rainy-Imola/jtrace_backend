@@ -4,21 +4,28 @@
 
 #### 数据库主要实体类型
 1. 用户(User)，以下为用户实体具有的属性，括号内为json文件中对应的属性名
-    - ID(id,pk)
+    - ID(id, pk)
     - 用户名(username)
     - 用户密码(password)
-    - 用户邮箱(email)   // Todo
-    - 留言(List<Message> mappedBy = "author", @OneToMany, CascadeType.ALL)  // Todo
-1. 留言(Message)
-    - ID(id,pk)
-    - 留言用户(author, User, @ManyToOne({CascadeType.REFRESH, CascadeType.MERGE}, optional = false), @JoinColumn(name="user_id))
-    - 留言内容(content)
-    - 日期(date, Date)
-1. 图片(Picture)
+    - 用户邮箱(email)
+    - 爱好(hobby)
+    - 星座(constellation)
+1. 动态(Message)
     - ID(id, pk)
-    - 图片名(picname)
-    - 图片地址(picaddr， 使用图云存储地址)
-
+    - 动态作者(author, Integer, @ManyToOne({CascadeType.REFRESH, CascadeType.MERGE}, optional = false), @JoinColumn(name="user_id))
+    - 动态内容(content)
+    - 发布日期(date, Date)
+    - 图片(picture, String)
+1. 评论(Comment)
+    - ID(id, pk)
+    - 评论者(author, Integer)
+    - 评论内容(content, String)
+    - 评论日期(date, Date)
+    - 被评论动态(Message @ManyToOne)
+1. 关系(Relationship) // 尚未验证可行性
+    - ID(用于查找User)
+    - 用户名(Username, String)
+    - 朋友(List<FriendsRelation>)
 ## 后端功能需求分析
 
 #### 用户管理（用户名和邮箱均唯一，且不能修改）
@@ -33,13 +40,15 @@
     ->两次一致->修改数据库中密码->修改成功
     ->两次不一致->修改失败
 
-#### 留言板管理
-- 发布留言：接收前端数据(POST,用户，留言内容，日期)->创建新留言->添加到数据库中 // Todo: 留言中添加图片
-- 删除留言：接收前端数据(DELETE, id)->删除数据库中对应留言
-- 修改留言：接收前端数据(PUT, 留言内容，日期)->修改数据库中留言
+#### 动态管理
+- 发布动态：接收前端数据(POST,用户，留言内容，日期)->创建新留言->添加到数据库中
+- 删除动态：接收前端数据(DELETE, id)->删除数据库中对应留言
+- 修改动态：接收前端数据(PUT, 留言内容，日期)->修改数据库中留言
 - 查看全部留言
 - 查看自己的留言
-- 评论留言 // Todo
+- 评论留言
+
+# 好友关系管理
 
 # 项目整体框架讨论
 ![avatar](./picture/fig1.PNG)

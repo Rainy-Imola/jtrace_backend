@@ -3,9 +3,11 @@ package com.backend.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,10 +20,17 @@ public class User {
 
     private String username;
     private String password;
+    private String email;
+    @ElementCollection
+    private List<String> hobby;
+    private String constellation;
 
     public User(Integer id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.email = null;
+        this.hobby = null;
+        this.constellation = null;
     }
 }

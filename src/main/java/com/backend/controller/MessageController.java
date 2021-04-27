@@ -1,7 +1,9 @@
 package com.backend.controller;
 
+import com.backend.entity.Comment;
 import com.backend.entity.Message;
 import com.backend.entity.User;
+import com.backend.service.CommentService;
 import com.backend.service.MessageService;
 import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
@@ -25,9 +27,12 @@ public class MessageController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CommentService commentService;
+
     // get messages by author
-    @GetMapping("/{author}")
-    public Msg findByAuthor(@PathVariable String author) {
+    @GetMapping()
+    public Msg findByAuthor(@RequestParam String author) {
         Logger logger = Logger.getLogger(MessageController.class);
 
         User user = userService.findByName(author);
@@ -45,10 +50,22 @@ public class MessageController {
         }
     }
 
-    // get message
+    // get messages
     @GetMapping("/")
     public List<Message> getMessages() {
         return messageService.getMessages();
+    }
+
+    // get message
+    @GetMapping("/{id}")
+    public Msg getMessage(@PathVariable Integer id) {
+        Message message = messageService.findById(id);
+        List<Comment> comments = commentService.getComments(id);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("message", (Message) message);
+        jsonObject.put("comment", (List<Comment>) comments);
+        JSONArray data = JSONArray.fromObject(jsonObject);
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
     }
 
     // release message
