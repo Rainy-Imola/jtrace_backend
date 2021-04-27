@@ -5,9 +5,14 @@ import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
 import com.backend.utils.sessionUtils.SessionUtils;
+
+import com.louislivi.fastdep.shirojwt.jwt.JwtUtil;
+import net.sf.json.JSON;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     // Login
     @PostMapping("/login")
@@ -39,8 +47,10 @@ public class UserController {
 
             List<User> array = new ArrayList<>();
             array.add(auth);
-
             JSONArray data = JSONArray.fromObject(array);
+            JSONObject tokenJson = new JSONObject();
+            tokenJson.put("token",jwtUtil.sign(username));
+            data.add(tokenJson);
             logger.info("Path: /login, status: success, username: " + username);
             return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.LOGIN_SUCCESS_MSG, data);
         } else {
@@ -79,6 +89,7 @@ public class UserController {
     }
 
     // Get user profile
+
     @GetMapping("/{username}/info")
     public Msg userInfo(@PathVariable String username) {
         User user = userService.findByName(username);

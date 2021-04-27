@@ -109,11 +109,24 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.3.0</version>
         </dependency>
+        
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j-ogm-core</artifactId>
             <version>3.2.7</version>
             <scope>compile</scope>
+        </dependency>
+      
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.louislivi.fastdep</groupId>
+            <artifactId>fastdep-shiro-jwt</artifactId>
+            <version>1.0.5</version>
         </dependency>
 
     </dependencies>
