@@ -1,3 +1,16 @@
 server:
   port: 8000
 #  address: 10.162.62.23
+
+fastdep:
+  shiro-jwt:
+    filter:
+      users:
+        path: /users/**/info
+        role: jwt
+      message:
+        path: /msgboard/**/**
+        role: jwt
+
+    secret: "6Dx8SIuaHXJYnpsG18SSpjPs50lZcT52"
+# 可参考连接：https://fastdep.louislivi.com/#/module/fastdep-shiro-jwt
