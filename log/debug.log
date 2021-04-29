@@ -21,3 +21,6 @@
 2021-04-27 22:16:14  [ http-nio-8000-exec-4:48574 ] - [ INFO ]  Path: /friends/, status: success
 2021-04-28 11:11:57  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: snowfall
 2021-04-28 11:13:51  [ http-nio-8000-exec-3:114704 ] - [ INFO ]  Path: /login, status: success, username: snowfall
+
+2021-04-28 15:03:56  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /register, status: fail, username: test2
+2021-04-28 15:10:43  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /register, status: success, username: test2
