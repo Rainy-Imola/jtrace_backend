@@ -69,6 +69,7 @@ public class UserController {
     public Msg register(@RequestBody JSONObject jsonObject) {
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");
+        String email = jsonObject.getString("email");
 
         User auth = userService.findByName(username);
 
@@ -78,6 +79,7 @@ public class UserController {
             User user = new User();
             user.setUsername(username);
             user.setPassword(password);
+            user.setEmail(email);
 
             List<User> array = new ArrayList<>();
             array.add(user);
