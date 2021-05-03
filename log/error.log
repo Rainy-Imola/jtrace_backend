@@ -1,1 +1,6 @@
 2021-04-28 15:03:56  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /register, status: fail, username: test2
+2021-05-03 08:58:53  [ http-nio-8000-exec-4:0 ] - [ ERROR ]  Path: /users/register, status: fail, error msg: password1 != password2
+2021-05-03 09:02:50  [ http-nio-8000-exec-2:236679 ] - [ ERROR ]  Path: /users/register, status: fail, error msg: password1 != password2
+2021-05-03 09:09:10  [ http-nio-8000-exec-6:617179 ] - [ ERROR ]  Path: /users/register, status: fail, error msg: password1 != password2
+2021-05-03 09:12:06  [ http-nio-8000-exec-9:793549 ] - [ ERROR ]  Path: /users/register, status: fail, error msg: password1 != password2
+2021-05-03 09:12:20  [ http-nio-8000-exec-7:807356 ] - [ ERROR ]  Path: /register, status: fail, username: test
