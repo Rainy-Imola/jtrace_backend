@@ -68,17 +68,23 @@ public class UserController {
     @PostMapping("/register")
     public Msg register(@RequestBody JSONObject jsonObject) {
         String username = jsonObject.getString("username");
-        String password = jsonObject.getString("password");
+        String password1 = jsonObject.getString("password1");
+        String password2 = jsonObject.getString("password2");
         String email = jsonObject.getString("email");
 
-        User auth = userService.findByName(username);
-
         Logger logger = Logger.getLogger(UserController.class);
+
+        if (!password1.equals(password2)) {
+            logger.error("Path: /users/register, status: fail, error msg: password1 != password2");
+            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
+        }
+
+        User auth = userService.findByName(username);
 
         if (auth == null) {
             User user = new User();
             user.setUsername(username);
-            user.setPassword(password);
+            user.setPassword(password1);
             user.setEmail(email);
 
             List<User> array = new ArrayList<>();
