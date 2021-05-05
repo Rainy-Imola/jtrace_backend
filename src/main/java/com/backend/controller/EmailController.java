@@ -27,12 +27,18 @@ public class EmailController {
     public void sendEmail(@RequestBody JSONObject jsonObject) {
         String email = jsonObject.getString("email");
         data = mailService.sendMimeMail(email);
-        String captcha = data.getString("code");
+        String code = data.getString("code");
 
-        Captcha cap = new Captcha();
-        cap.setEmail(email);
-        cap.setCaptcha(captcha);
-        captchaService.addCaptcha(cap);
+        Captcha captcha = captchaService.findByEmail(email);
+        if (captcha != null) {
+            captcha.setCaptcha(code);
+            captchaService.addCaptcha(captcha);
+        } else {
+            Captcha captcha1 = new Captcha();
+            captcha1.setEmail(email);
+            captcha1.setCaptcha(code);
+            captchaService.addCaptcha(captcha1);
+        }
     }
 
     @PostMapping("/checkemail")
