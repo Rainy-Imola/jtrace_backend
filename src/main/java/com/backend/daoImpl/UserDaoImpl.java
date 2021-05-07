@@ -38,4 +38,13 @@ public class UserDaoImpl implements UserDao {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    @Override
+    public User findById(Integer id) {
+        if (userRepository.findById(id).isPresent()) {
+            return userRepository.findById(id).get();
+        } else {
+            return null;
+        }
+    }
 }

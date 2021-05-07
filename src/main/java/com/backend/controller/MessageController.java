@@ -52,8 +52,29 @@ public class MessageController {
 
     // get messages
     @GetMapping("/")
-    public List<Message> getMessages() {
-        return messageService.getMessages();
+    public Msg getMessages() {
+        List<Message> messages = messageService.getMessages();
+
+        JSONArray data = new JSONArray();
+        Integer i = 0;
+        for (i = 0; i < messages.size(); i++) {
+            Message message = messages.get(i);
+            Integer authorId = message.getAuthor();
+            String authorName = userService.findById(authorId).getUsername();
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("author", authorName);
+            jsonObject.put("content", message.getContent());
+            jsonObject.put("date", message.getDate());
+            jsonObject.put("picture", message.getPicture());
+
+            data.add(jsonObject);
+        }
+
+        Logger logger = Logger.getLogger(MessageController.class);
+        logger.info("Path: /msgboard/, status: success");
+        
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
     }
 
     // get message

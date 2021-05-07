@@ -34,3 +34,6 @@
 2021-05-03 09:12:52  [ http-nio-8000-exec-1:839029 ] - [ INFO ]  Path: /register, status: success, username: testem
 2021-05-03 18:27:31  [ http-nio-8000-exec-3:0 ] - [ INFO ]  Path: /register, status: success, username: testst
 2021-05-07 14:32:49  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /email/sendemail, status: failed, error: email has been used
+2021-05-07 17:57:48  [ http-nio-8000-exec-3:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-07 17:58:30  [ http-nio-8000-exec-4:41214 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-07 17:59:02  [ http-nio-8000-exec-5:73527 ] - [ INFO ]  Path: /msgboard/, status: success
