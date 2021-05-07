@@ -1,6 +1,8 @@
 package com.backend.controller;
 
 import com.backend.entity.Friend;
+import com.backend.entity.FriendRequest;
+import com.backend.service.FriendRequestService;
 import com.backend.service.FriendService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
@@ -18,6 +20,65 @@ import java.util.List;
 public class FriendController {
     @Autowired
     private FriendService friendService;
+
+    @Autowired
+    private FriendRequestService friendRequestService;
+
+    // get friend requests
+    @GetMapping("/requests/{username}")
+    public Msg getRequests(@PathVariable String username) {
+        List<FriendRequest> requests = friendRequestService.findByUsername2(username);
+
+        JSONArray data = JSONArray.fromObject(requests);
+
+        Logger logger = Logger.getLogger(FriendController.class);
+        logger.info("Path: /requests/" + username + " status: success");
+
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
+    }
+
+    // get friend responses
+    @GetMapping("/responses/{username}")
+    public Msg getResponse(@PathVariable String username) {
+        List<FriendRequest> responses = friendRequestService.findByUsername1(username);
+
+        JSONArray data = JSONArray.fromObject(responses);
+
+        Logger logger = Logger.getLogger(FriendController.class);
+        logger.info("Path: /responses/" + username + " status: success");
+
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
+    }
+
+
+    // request for a friend
+    @PostMapping("/request")
+    public Msg requestFriend(@RequestBody JSONObject jsonObject) {
+        String username1 = jsonObject.getString("username1");
+        String username2 = jsonObject.getString("username2");
+
+        friendRequestService.addRequest(username1, username2);
+
+        Logger logger = Logger.getLogger(FriendController.class);
+        logger.info("Path: /request, status: success");
+
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
+    }
+
+    // response to a friend request
+    @PostMapping("/response")
+    public Msg responseFriend(@RequestBody JSONObject jsonObject) {
+        String username1 = jsonObject.getString("username1");
+        String username2 = jsonObject.getString("username2");
+        Integer status = jsonObject.getInt("status");
+
+        FriendRequest friendRequest = friendRequestService.findByUsernames(username1, username2);
+        friendRequest.setStatus(status);
+
+        friendRequestService.setStatus(friendRequest);
+
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
+    }
 
     // Add friend
     @PostMapping("/add")
