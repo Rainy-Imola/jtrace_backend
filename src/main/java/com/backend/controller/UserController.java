@@ -7,12 +7,10 @@ import com.backend.utils.msgUtils.MsgUtils;
 import com.backend.utils.sessionUtils.SessionUtils;
 
 import com.louislivi.fastdep.shirojwt.jwt.JwtUtil;
-import net.sf.json.JSON;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,6 +76,13 @@ public class UserController {
             logger.error("Path: /users/register, status: fail, error msg: password1 != password2");
             return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
         }
+
+        User user0 = userService.findByEmail(email);
+        if (user0 != null) {
+            logger.error("Path: /register, status: fail, username: " + username + " Error: email has been taken");
+            return MsgUtils.makeMsg(MsgUtils.REGISTER_ERROR, MsgUtils.REGISTER_ERROR_MSG);
+        }
+
 
         User auth = userService.findByName(username);
 
