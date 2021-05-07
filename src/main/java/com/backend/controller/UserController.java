@@ -153,4 +153,18 @@ public class UserController {
         logger.info("Path: /" + username + "/info, status: success");
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
     }
+
+    // Update avatar
+    @PostMapping("/{username}/avatar")
+    public Msg updateAvatar(@PathVariable String username, @RequestBody JSONObject jsonObject) {
+        User user = userService.findByName(username);
+        String avatar = (String) jsonObject.get("avatar");
+
+        user.setAvatar(avatar);
+        userService.addUser(user);
+
+        Logger logger = Logger.getLogger(UserController.class);
+        logger.info("Path: /" + username + "/avatar, status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
+    }
 }
