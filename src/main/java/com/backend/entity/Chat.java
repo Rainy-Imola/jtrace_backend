@@ -22,13 +22,15 @@ public class Chat {
 
     private String message;
     private Date time;
+    private Boolean read;
 
-    public Chat(Integer id, Integer from, Integer to, String message, Date time) {
+    public Chat(Integer id, Integer from, Integer to, String message, Date time, Boolean read) {
         this.id = id;
         this.from = from;
         this.to = to;
         this.message = message;
         this.time = time;
+        this.read = read;
     }
 
 }
