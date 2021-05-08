@@ -8,11 +8,13 @@ on:
     branches: [ devlop ]
   pull_request:
     branches: [ devlop ]
+  release:
+    types: [created]
 
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -23,3 +25,7 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+#    - name: Public package
+#      run: mvn --batch-mode deploy
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
