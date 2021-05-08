@@ -25,6 +25,8 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: test token
+      run: cat ${{ secrets.SNOWFLAKE }}
     - name: Public package
       run: mvn --batch-mode deploy
       env:
