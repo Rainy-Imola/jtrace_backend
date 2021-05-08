@@ -24,6 +24,7 @@ public class User {
     @ElementCollection
     private List<String> hobby;
     private String constellation;
+    private String avatar;
 
     public User(Integer id, String username, String password) {
         this.id = id;
@@ -32,5 +33,6 @@ public class User {
         this.email = null;
         this.hobby = null;
         this.constellation = null;
+        this.avatar = null;
     }
 }

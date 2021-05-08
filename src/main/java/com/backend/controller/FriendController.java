@@ -58,9 +58,8 @@ public class FriendController {
     }
 
     // Get friends
-    @GetMapping("/")
-    public Msg getFriends(@RequestBody JSONObject jsonObject) {
-        String username = jsonObject.getString("username");
+    @GetMapping("/{username}")
+    public Msg getFriends(@PathVariable String username) {
         List<Friend> friends = friendService.findByUsername(username);
         List<String> data = new ArrayList<>();
         for (Integer i = 0; i < friends.size(); i++) {
