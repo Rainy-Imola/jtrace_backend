@@ -43,3 +43,5 @@
 2021-05-09 10:18:57  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: root
 2021-05-09 10:19:20  [ http-nio-8000-exec-2:22600 ] - [ INFO ]  Path: /msgboard/, status: success
 2021-05-09 11:48:10  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /msgboard/1comments/release, status: success
+2021-05-09 21:49:15  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-09 21:51:02  [ http-nio-8000-exec-4:106879 ] - [ INFO ]  Path: /msgboard/1comments/release, status: success

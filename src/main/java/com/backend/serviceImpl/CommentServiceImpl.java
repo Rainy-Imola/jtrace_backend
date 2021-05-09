@@ -14,8 +14,8 @@ public class CommentServiceImpl implements CommentService {
     CommentDao commentDao;
 
     @Override
-    public List<Comment> getComments(Integer message_id) {
-        return commentDao.getComments(message_id);
+    public List<Comment> getComments(Integer message) {
+        return commentDao.getComments(message);
     }
 
     @Override

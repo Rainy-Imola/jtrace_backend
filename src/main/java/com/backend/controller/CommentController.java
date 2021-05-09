@@ -27,13 +27,12 @@ public class CommentController {
         Integer author = jsonObject.getInt("author");
         String content = jsonObject.getString("content");
         Date date = new Date();
-        Message message = messageService.findById(message_id);
 
         Comment comment = new Comment();
         comment.setAuthor(author);
         comment.setContent(content);
         comment.setDate(date);
-        comment.setMessage(message);
+        comment.setMessage(message_id);
 
         commentService.releaseComment(comment);
 

@@ -23,14 +23,9 @@ public class CommentDaoImpl implements CommentDao {
     MongoAutoIdUtils mongoAutoIdUtils;
 
     @Override
-    public List<Comment> getComments(Integer message_id) {
-        if (messageRepository.findById(message_id).isPresent()) {
-            Message message = messageRepository.findById(message_id).get();
-            List<Comment> comments = commentRepository.findCommentsByMessage(message);
-            return comments;
-        } else {
-            return null;
-        }
+    public List<Comment> getComments(Integer message) {
+        List<Comment> comments = commentRepository.findCommentsByMessage(message);
+        return comments;
     }
 
     @Override

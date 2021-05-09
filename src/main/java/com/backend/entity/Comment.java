@@ -22,10 +22,9 @@ public class Comment {
     private String content;
     private Date date;
 
-    @ManyToOne
-    private Message message;
+    private Integer message;
 
-    public Comment(Integer id, Integer author, String content, Date date, Message message) {
+    public Comment(Integer id, Integer author, String content, Date date, Integer message) {
         this.id = id;
         this.author = author;
         this.content = content;
