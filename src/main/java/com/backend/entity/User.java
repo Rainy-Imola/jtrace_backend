@@ -25,6 +25,9 @@ public class User {
     private List<String> hobby;
     private String constellation;
 
+    private Boolean status; // online or offline
+    private String IPAddress;
+
     public User(Integer id, String username, String password) {
         this.id = id;
         this.username = username;
@@ -32,5 +35,7 @@ public class User {
         this.email = null;
         this.hobby = null;
         this.constellation = null;
+        this.status = false;
+        this.IPAddress = null;
     }
 }
