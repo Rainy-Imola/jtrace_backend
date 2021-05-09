@@ -17,14 +17,14 @@ public class Chat {
     @GeneratedValue
     private Integer id;
 
-    private Integer from;
-    private Integer to;
+    private String from;
+    private String to;
 
     private String message;
-    private Date time;
+    private String time;
     private Boolean read;
 
-    public Chat(Integer id, Integer from, Integer to, String message, Date time, Boolean read) {
+    public Chat(Integer id, String from, String to, String message, String time, Boolean read) {
         this.id = id;
         this.from = from;
         this.to = to;

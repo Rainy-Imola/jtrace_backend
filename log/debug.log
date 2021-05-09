@@ -34,3 +34,9 @@
 2021-05-03 09:12:52  [ http-nio-8000-exec-1:839029 ] - [ INFO ]  Path: /register, status: success, username: testem
 2021-05-03 18:27:31  [ http-nio-8000-exec-3:0 ] - [ INFO ]  Path: /register, status: success, username: testst
 2021-05-08 22:53:15  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-09 19:09:39  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-09 19:19:39  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /chat/sendchat, status: success
+2021-05-09 19:22:02  [ http-nio-8000-exec-3:142518 ] - [ INFO ]  Path: /chat/getchat, status = success
+2021-05-09 19:24:26  [ http-nio-8000-exec-5:286696 ] - [ INFO ]  Path: /chat/sendchat, status: success
+2021-05-09 19:24:29  [ http-nio-8000-exec-6:290176 ] - [ INFO ]  Path: /chat/getchat, status = success
+2021-05-09 19:25:19  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /chat/getchat, status = success
