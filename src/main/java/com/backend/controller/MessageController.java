@@ -69,6 +69,7 @@ public class MessageController {
             String str = sdf.format(date);
 
             JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id", message.getId());
             jsonObject.put("author", authorName);
             jsonObject.put("content", message.getContent());
             jsonObject.put("date", str);
