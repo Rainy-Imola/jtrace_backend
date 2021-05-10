@@ -40,3 +40,6 @@
 2021-05-09 19:24:26  [ http-nio-8000-exec-5:286696 ] - [ INFO ]  Path: /chat/sendchat, status: success
 2021-05-09 19:24:29  [ http-nio-8000-exec-6:290176 ] - [ INFO ]  Path: /chat/getchat, status = success
 2021-05-09 19:25:19  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /chat/getchat, status = success
+2021-05-10 10:18:26  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /chat/sendchat, status: success
+2021-05-10 10:20:11  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /chat/sendchat, status: success
+2021-05-10 10:20:51  [ http-nio-8000-exec-2:40715 ] - [ INFO ]  Path: /chat/sendchat, status: success

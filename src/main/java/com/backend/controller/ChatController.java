@@ -37,7 +37,6 @@ public class ChatController {
         String from = jsonObject.getString("from");
         String to = jsonObject.getString("to");
         Date date = new Date();
-        Boolean read = false;
 
         Chat chat = new Chat();
         chat.setFrom(from);
@@ -47,7 +46,6 @@ public class ChatController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = sdf.format(date);
         chat.setTime(time);
-        chat.setRead(read);
 
         chatService.addChat(chat);
 
