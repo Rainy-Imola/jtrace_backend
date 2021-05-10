@@ -35,7 +35,5 @@ public class User {
         this.email = null;
         this.hobby = null;
         this.constellation = null;
-        this.status = false;
-        this.IPAddress = null;
     }
 }
