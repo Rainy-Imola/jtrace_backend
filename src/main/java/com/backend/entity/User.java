@@ -26,6 +26,8 @@ public class User {
     private String constellation;
     private String avatar;
 
+    private Boolean status; // online or offline
+
     public User(Integer id, String username, String password) {
         this.id = id;
         this.username = username;
