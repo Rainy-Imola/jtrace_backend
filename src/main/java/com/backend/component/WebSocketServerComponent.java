@@ -6,21 +6,26 @@ import com.backend.service.ChatService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
-import javax.annotation.PostConstruct;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@ServerEndpoint("/webSocket/{username}")
 @Component
+@ServerEndpoint("/webSocket/{username}")
 public class WebSocketServerComponent {
 
+    private static WebApplicationContext context;
     @Autowired
-    private ChatService chatService;
+    public void getContext(WebApplicationContext context) {
+        this.context = context;
+    }
 
     private static AtomicInteger onlineNum = new AtomicInteger(); // record current online number
     private static ConcurrentHashMap<String, Session> sessionPools = new ConcurrentHashMap<>(); // store websocketServer for every client
@@ -75,8 +80,15 @@ public class WebSocketServerComponent {
         chat.setFrom(jsonObject.getString("From"));
         chat.setTo(jsonObject.getString("To"));
         chat.setMessage(jsonObject.getString("message"));
+        Date date = new Date();
 
-        // chatService.addChat(chat);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
+        chat.setTime(time);
+
+        ChatService chatService = context.getBean(ChatService.class);
+
+        chatService.addChat(chat);
         sendInfo(chat.getTo(), JSON.toJSONString(chat, true));
     }
 
