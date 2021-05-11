@@ -6,13 +6,10 @@ name: Java CI with Maven
 on:
   push:
     branches: [ devlop ]
-  pull_request:
-    branches: [ devlop ]
 
 jobs:
   build:
-
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -23,3 +20,31 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Generate jar file
+      run: mvn clean package
+#    - name: Set SSH Environment
+#      run: |
+#        mkdir -p ~/.ssh/
+#        echo "${{ secrets.ID_RSA }}" > ~/.ssh/id_rsa
+#        echo "${{ secrets.ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
+#        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+#        chmod 700 ~/.ssh && chmod 700 ~/.ssh/*
+#        ls -l ~/.ssh/
+#    - name: Send jar file to remote server using scp
+#      uses: garygrossgarten/github-action-scp@release
+#      with:
+#        local: xxx
+#        remote: xxx
+#        host: ${{ secrets.Host_IP }}
+#        username: ${{ secrets.Host_username }}
+#        password: ${{ secrets.Host_password }}
+#    - name: Execute command on server
+#      uses: appleboy/ssh-action@master
+#      with:
+#        host: ${{ secrets.Host_IP }}
+#        username: ${{ secrets.Host_username }}
+#        password: ${{ secrets.Host_password }}
+#        script: |
+#          cd: xxx
+#          ./xxx
+

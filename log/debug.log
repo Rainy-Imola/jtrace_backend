@@ -43,3 +43,15 @@
 2021-05-10 10:18:26  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /chat/sendchat, status: success
 2021-05-10 10:20:11  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /chat/sendchat, status: success
 2021-05-10 10:20:51  [ http-nio-8000-exec-2:40715 ] - [ INFO ]  Path: /chat/sendchat, status: success
+2021-05-07 14:32:49  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /email/sendemail, status: failed, error: email has been used
+2021-05-07 17:57:48  [ http-nio-8000-exec-3:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-07 17:58:30  [ http-nio-8000-exec-4:41214 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-07 17:59:02  [ http-nio-8000-exec-5:73527 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-07 21:26:32  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-08 23:02:32  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-08 23:07:05  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-09 10:18:57  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-09 10:19:20  [ http-nio-8000-exec-2:22600 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-09 11:48:10  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /msgboard/1comments/release, status: success
+2021-05-09 21:49:15  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-09 21:51:02  [ http-nio-8000-exec-4:106879 ] - [ INFO ]  Path: /msgboard/1comments/release, status: success

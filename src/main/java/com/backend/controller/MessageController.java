@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -52,8 +53,35 @@ public class MessageController {
 
     // get messages
     @GetMapping("/")
-    public List<Message> getMessages() {
-        return messageService.getMessages();
+    public Msg getMessages() {
+        List<Message> messages = messageService.getMessages();
+
+        JSONArray data = new JSONArray();
+        Integer i = 0;
+        for (i = 0; i < messages.size(); i++) {
+            Message message = messages.get(i);
+            Integer authorId = message.getAuthor();
+            String authorName = userService.findById(authorId).getUsername();
+
+            Date date = message.getDate();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss.SSSXXX");
+
+            String str = sdf.format(date);
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id", message.getId());
+            jsonObject.put("author", authorName);
+            jsonObject.put("content", message.getContent());
+            jsonObject.put("date", str);
+            jsonObject.put("picture", message.getPicture());
+
+            data.add(jsonObject);
+        }
+
+        Logger logger = Logger.getLogger(MessageController.class);
+        logger.info("Path: /msgboard/, status: success");
+        
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
     }
 
     // get message

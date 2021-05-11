@@ -1,11 +1,14 @@
 package com.backend.controller;
 
 import com.backend.entity.Captcha;
+import com.backend.entity.User;
 import com.backend.service.CaptchaService;
 import com.backend.service.MailService;
+import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
 import net.sf.json.JSONObject;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +22,25 @@ public class EmailController {
     private MailService mailService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private CaptchaService captchaService;
 
     private JSONObject data;
 
     @PostMapping("/sendemail")
-    public void sendEmail(@RequestBody JSONObject jsonObject) {
+    public Msg sendEmail(@RequestBody JSONObject jsonObject) {
         String email = jsonObject.getString("email");
+
+        User user = userService.findByEmail(email);
+        Logger logger = Logger.getLogger(EmailController.class);
+
+        if (user != null) {
+            logger.error("Path: /email/sendemail, status: failed, error: email has been used");
+            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
+        }
+
         data = mailService.sendMimeMail(email);
         String code = data.getString("code");
 
@@ -39,6 +54,9 @@ public class EmailController {
             captcha1.setCaptcha(code);
             captchaService.addCaptcha(captcha1);
         }
+
+        logger.info("Path: /email/sendemail, status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
     }
 
     @PostMapping("/checkemail")
