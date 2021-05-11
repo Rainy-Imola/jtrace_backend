@@ -1,6 +1,5 @@
 package com.backend;
 
-import com.backend.websocket.ChatSocketServer;
 import org.java_websocket.server.WebSocketServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,11 +13,6 @@ public class BackendApplication {
 
         SpringApplication.run(BackendApplication.class, args);
 
-        String host = "localhost";
-        Integer port = 8887;
-
-        WebSocketServer server = new ChatSocketServer(new InetSocketAddress(host, port));
-        server.run();
     }
 
 }

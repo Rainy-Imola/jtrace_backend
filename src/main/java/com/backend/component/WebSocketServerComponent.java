@@ -1,11 +1,13 @@
-package com.backend.websocket;
+package com.backend.component;
 
 import com.alibaba.fastjson.JSON;
 import com.backend.entity.Chat;
 import com.backend.service.ChatService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -15,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @ServerEndpoint("/webSocket/{username}")
 @Component
-public class webSocketServer {
+public class WebSocketServerComponent {
 
     @Autowired
     private ChatService chatService;
@@ -36,6 +38,11 @@ public class webSocketServer {
     // send message to specific user
     public void sendInfo(String username, String message) {
         Session session = sessionPools.get(username);
+        if (session == null) {
+            System.out.println("Send message error: User " + username + " is not online");
+            return;
+        }
+
         try {
             sendMessage(session, message);
         } catch (Exception e) {
@@ -63,8 +70,13 @@ public class webSocketServer {
     @OnMessage
     public void onMessage(String message) throws IOException {
         System.out.println("Server get: " + message);
-        Chat chat = JSON.parseObject(message, Chat.class);
-        chatService.addChat(chat);
+        JSONObject jsonObject = JSONObject.fromObject(message);
+        Chat chat = new Chat();
+        chat.setFrom(jsonObject.getString("From"));
+        chat.setTo(jsonObject.getString("To"));
+        chat.setMessage(jsonObject.getString("message"));
+
+        // chatService.addChat(chat);
         sendInfo(chat.getTo(), JSON.toJSONString(chat, true));
     }
 
