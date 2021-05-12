@@ -5,3 +5,5 @@
 2021-05-03 09:12:06  [ http-nio-8000-exec-9:793549 ] - [ ERROR ]  Path: /users/register, status: fail, error msg: password1 != password2
 2021-05-03 09:12:20  [ http-nio-8000-exec-7:807356 ] - [ ERROR ]  Path: /register, status: fail, username: test
 2021-05-07 14:32:49  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /email/sendemail, status: failed, error: email has been used
+2021-05-12 13:49:46  [ http-nio-8000-exec-5:309787 ] - [ ERROR ]  Path: /register, status: fail, username: root Error: email has been taken
+2021-05-12 13:49:57  [ http-nio-8000-exec-6:321644 ] - [ ERROR ]  Path: /register, status: fail, username: root Error: email has been taken

@@ -95,3 +95,7 @@
 2021-05-11 23:52:52  [ http-nio-8000-exec-4:9970 ] - [ INFO ]  Path: /login, status: success, username: test2
 2021-05-11 23:52:55  [ http-nio-8000-exec-5:13059 ] - [ INFO ]  Path: /msgboard/, status: success
 2021-05-11 23:52:55  [ http-nio-8000-exec-6:13277 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-12 13:44:36  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-12 13:45:11  [ http-nio-8000-exec-2:35296 ] - [ INFO ]  Path: /login, status: success, username: root
+2021-05-12 13:49:46  [ http-nio-8000-exec-5:309787 ] - [ ERROR ]  Path: /register, status: fail, username: root Error: email has been taken
+2021-05-12 13:49:57  [ http-nio-8000-exec-6:321644 ] - [ ERROR ]  Path: /register, status: fail, username: root Error: email has been taken
