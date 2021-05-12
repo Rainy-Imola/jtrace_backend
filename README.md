@@ -48,14 +48,19 @@
 - 查看自己的留言
 - 评论留言
 
-# 好友关系管理
+## 技术应用
+- Spring boot
+- Log4j
+- docker-compose
+- MySQL
+- MongoDB
+- Prometheus
+- Grafana
+- websocket
 
-# 项目整体框架讨论
-![avatar](./picture/fig1.PNG)
-
-# 注意事项
-- 目前并没有设置错误情况处理，目前认为查询的用户及留言均存在；后续会在与前端进行对接的过程中及进行修改
+#### Under construction
+- GitHub Actions
+- Kubernetes
 
 # Todo list
-- [ ] 聊天通信
 - [ ] 传输信息加密
