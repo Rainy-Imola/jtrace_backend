@@ -133,4 +133,17 @@ public class FriendController {
         JSONArray jsonArray = JSONArray.fromObject(data);
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, jsonArray);
     }
+
+    @PostMapping("/check")
+    public Integer checkFriends(@RequestBody JSONObject jsonObject) {
+        String username1 = jsonObject.getString("username1");
+        String username2 = jsonObject.getString("username2");
+
+        Friend friend = friendService.findByUsername1AndUsername2(username1, username2);
+        if (friend == null) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 }
