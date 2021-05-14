@@ -60,8 +60,15 @@ public class FriendController {
     public Msg requestFriend(@RequestBody JSONObject jsonObject) {
         String username1 = jsonObject.getString("username1");
         String username2 = jsonObject.getString("username2");
+        String reqMsg = jsonObject.getString("reqMsg");
 
-        friendRequestService.addRequest(username1, username2);
+        FriendRequest friendRequest = new FriendRequest();
+        friendRequest.setUsername1(username1);
+        friendRequest.setUsername2(username2);
+        friendRequest.setReqMsg(reqMsg);
+        friendRequest.setStatus(0);
+
+        friendRequestService.addRequest(friendRequest);
 
         Logger logger = Logger.getLogger(FriendController.class);
         logger.info("Path: /request, status: success");
@@ -78,6 +85,19 @@ public class FriendController {
 
         FriendRequest friendRequest = friendRequestService.findByUsernames(username1, username2);
         friendRequest.setStatus(status);
+
+        if (status == 1) {  // if accept
+            Friend friend1 = new Friend();
+            friend1.setUsername1(username1);
+            friend1.setUsername2(username2);
+
+            Friend friend2 = new Friend();
+            friend2.setUsername1(username2);
+            friend2.setUsername2(username1);
+
+            friendService.addFriend(friend1);
+            friendService.addFriend(friend2);
+        }
 
         friendRequestService.setStatus(friendRequest);
 

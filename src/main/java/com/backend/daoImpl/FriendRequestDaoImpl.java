@@ -34,12 +34,7 @@ public class FriendRequestDaoImpl implements FriendRequestDao {
     }
 
     @Override
-    public FriendRequest addRequest(String username1, String username2) {
-        FriendRequest friendRequest = new FriendRequest();
-        friendRequest.setUsername1(username1);
-        friendRequest.setUsername2(username2);
-        friendRequest.setStatus(0);
-
+    public FriendRequest addRequest(FriendRequest friendRequest) {
         return friendRequestRepository.saveAndFlush(friendRequest);
     }
 }

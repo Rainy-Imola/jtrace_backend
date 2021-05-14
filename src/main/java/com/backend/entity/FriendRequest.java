@@ -17,12 +17,15 @@ public class FriendRequest {
 
     private String username1;   // request user
     private String username2;   // response user
+    private String reqMsg;      // request message
+
     private Integer status;     // unhandled, reject or accept
 
-    public FriendRequest(Integer id, String username1, String username2, Integer status) {
+    public FriendRequest(Integer id, String username1, String username2, String reqMsg, Integer status) {
         this.id = id;
         this.username1 = username1;
         this.username2 = username2;
+        this.reqMsg = reqMsg;
         this.status = status;
     }
 }
