@@ -11,4 +11,5 @@ public interface UserService {
     User findByName(String username);
     User findByEmail(String email);
     User findById(Integer id);
+    Integer getUserStatus(String username);
 }

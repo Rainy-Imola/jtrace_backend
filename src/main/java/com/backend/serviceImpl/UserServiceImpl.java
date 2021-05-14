@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
     public User findById(Integer id) {
         return userDao.findById(id);
     }
+
+    @Override
+    public Integer getUserStatus(String username) {
+        return userDao.getUserStatus(username);
+    }
 }

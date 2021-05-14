@@ -4,6 +4,7 @@ import com.backend.entity.Friend;
 import com.backend.entity.FriendRequest;
 import com.backend.service.FriendRequestService;
 import com.backend.service.FriendService;
+import com.backend.service.UserService;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
 import net.sf.json.JSONArray;
@@ -20,6 +21,9 @@ import java.util.List;
 public class FriendController {
     @Autowired
     private FriendService friendService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private FriendRequestService friendRequestService;
@@ -122,9 +126,12 @@ public class FriendController {
     @GetMapping("/{username}")
     public Msg getFriends(@PathVariable String username) {
         List<Friend> friends = friendService.findByUsername(username);
-        List<String> data = new ArrayList<>();
+        List<JSONObject> data = new ArrayList<>();
         for (Integer i = 0; i < friends.size(); i++) {
-            data.add(friends.get(i).getUsername2());
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", friends.get(i).getUsername2());
+            jsonObject.put("status", userService.getUserStatus(friends.get(i).getUsername2()));
+            data.add(jsonObject);
         }
 
         Logger logger = Logger.getLogger(FriendController.class);

@@ -2,7 +2,9 @@ package com.backend.component;
 
 import com.alibaba.fastjson.JSON;
 import com.backend.entity.Chat;
+import com.backend.entity.User;
 import com.backend.service.ChatService;
+import com.backend.service.UserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -60,6 +62,12 @@ public class WebSocketServerComponent {
     public void onOpen(Session session, @PathParam(value = "username") String username) {
         sessionPools.put(username, session);
         addOnlineCount();
+
+        UserService userService = context.getBean(UserService.class);
+        User user = userService.findByName(username);
+        user.setStatus(true);
+        userService.addUser(user);
+
         System.out.println("Current online user number is: " + onlineNum);
     }
 
@@ -68,6 +76,12 @@ public class WebSocketServerComponent {
     public void onClose(@PathParam(value = "username") String username) {
         sessionPools.remove(username);
         subOnlineCount();
+
+        UserService userService = context.getBean(UserService.class);
+        User user = userService.findByName(username);
+        user.setStatus(false);
+        userService.addUser(user);
+
         System.out.println("Current online number is :" + onlineNum);
     }
 
