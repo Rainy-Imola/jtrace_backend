@@ -34,7 +34,7 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     }
 
     @Override
-    public FriendRequest addRequest(String username1, String username2) {
-        return friendRequestDao.addRequest(username1, username2);
+    public FriendRequest addRequest(FriendRequest friendRequest) {
+        return friendRequestDao.addRequest(friendRequest);
     }
 }
