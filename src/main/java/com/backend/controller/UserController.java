@@ -43,6 +43,9 @@ public class UserController {
             jsonObject.put("username", auth.getUsername());
             SessionUtils.setSession(jsonObject);
 
+            auth.setStatus(true);
+            userService.addUser(auth);
+
             List<User> array = new ArrayList<>();
             array.add(auth);
             JSONArray data = JSONArray.fromObject(array);
@@ -91,6 +94,7 @@ public class UserController {
             user.setUsername(username);
             user.setPassword(password1);
             user.setEmail(email);
+            user.setStatus(true);
 
             List<User> array = new ArrayList<>();
             array.add(user);
