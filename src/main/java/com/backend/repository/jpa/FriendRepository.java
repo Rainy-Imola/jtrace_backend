@@ -4,6 +4,7 @@ import com.backend.entity.Friend;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public interface FriendRepository extends JpaRepository<Friend, Integer> {
 
     @Cacheable
+    @Query(value = "from Friend where username1 = :username order by username2 asc")
     List<Friend> findByUsername1(String username);
 
     @Cacheable

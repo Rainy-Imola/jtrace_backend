@@ -112,3 +112,6 @@
 2021-05-14 21:19:12  [ http-nio-8000-exec-5:335420 ] - [ INFO ]  Path: /test/info, status: success
 2021-05-14 23:17:48  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
 2021-05-15 08:01:09  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /email/sendemail, status: success
+2021-05-15 08:35:32  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-15 08:36:11  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-15 08:36:29  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
