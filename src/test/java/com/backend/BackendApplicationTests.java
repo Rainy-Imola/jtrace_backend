@@ -35,6 +35,8 @@ public class BackendApplicationTests {
 
     @Test
     public void testUser() throws Exception {
+        System.out.println("CacheManager type: " + cacheManager.getClass());
+
         userRepository.save(new User(1, "test", "123"));
 
         User u1 = userRepository.findByName("test");
