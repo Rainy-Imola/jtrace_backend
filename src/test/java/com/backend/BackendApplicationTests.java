@@ -54,7 +54,6 @@ public class BackendApplicationTests {
         messageRepository.save(new Message(2, 1, "test message2", new Date()));
 
         List<Message> messages_after = messageRepository.findByAuthor(1);
-//        Assert.assertEquals(messages_before.size() + 2, messages_after.size());
     }
 
     @Test
