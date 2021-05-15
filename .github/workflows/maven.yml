@@ -22,6 +22,14 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Generate jar file
       run: mvn clean package
+    - name: Send jar file to remote server using scp
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: backend-0.0.1-SNAPSHOT.jar 
+        remote: /home/admin/code/backend/stack/
+        host: ${{ secrets.HOST_IP }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
 #    - name: Set SSH Environment
 #      run: |
 #        mkdir -p ~/.ssh/
@@ -30,14 +38,6 @@ jobs:
 #        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 #        chmod 700 ~/.ssh && chmod 700 ~/.ssh/*
 #        ls -l ~/.ssh/
-   - name: Send jar file to remote server using scp
-     uses: garygrossgarten/github-action-scp@release
-     with:
-       local: backend-0.0.1-SNAPSHOT.jar 
-       remote: /home/admin/code/backend/stack/
-       host: ${{ secrets.HOST_IP }}
-       username: ${{ secrets.HOST_USERNAME }}
-       password: ${{ secrets.HOST_PASSWORD }}
 #    - name: Execute command on server
 #      uses: appleboy/ssh-action@master
 #      with:
