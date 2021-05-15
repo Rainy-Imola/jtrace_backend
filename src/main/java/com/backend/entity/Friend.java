@@ -6,11 +6,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class Friend {
+public class Friend implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;

@@ -35,6 +35,8 @@ public class BackendApplicationTests {
 
     @Test
     public void testUser() throws Exception {
+        System.out.println("CacheManager type: " + cacheManager.getClass());
+
         userRepository.save(new User(1, "test", "123"));
 
         User u1 = userRepository.findByName("test");
@@ -52,7 +54,6 @@ public class BackendApplicationTests {
         messageRepository.save(new Message(2, 1, "test message2", new Date()));
 
         List<Message> messages_after = messageRepository.findByAuthor(1);
-//        Assert.assertEquals(messages_before.size() + 2, messages_after.size());
     }
 
     @Test
