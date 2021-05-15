@@ -31,7 +31,12 @@ public class EmailController {
 
     @PostMapping("/sendemail")
     public Msg sendEmail(@RequestBody JSONObject jsonObject) {
+        String standardEmail = "\\w+@sjtu.edu.cn";
+
         String email = jsonObject.getString("email");
+        if (!email.matches(standardEmail)) {
+            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.EMAIL_ERROR_MSG);
+        }
 
         User user = userService.findByEmail(email);
         Logger logger = Logger.getLogger(EmailController.class);

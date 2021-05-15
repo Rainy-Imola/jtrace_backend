@@ -19,6 +19,7 @@ public class MsgUtils {
     public static final String NOT_LOGGED_IN_ERROR_MSG = "Login failed, please login again!";
     public static final String REGISTER_ERROR_MSG = "Username has been taken!";
     public static final String REGISTER_SUCCESS_MSG = "Register Success!";
+    public static final String EMAIL_ERROR_MSG = "This is not a legal SJTU email address";
 
     public static Msg makeMsg(Integer status, String msg, JSONArray data){
         return new Msg(status, msg, data);
