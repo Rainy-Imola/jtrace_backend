@@ -25,7 +25,7 @@ jobs:
     - name: Send jar file to remote server using scp
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: backend-0.0.1-SNAPSHOT.jar 
+        local: /home/runner/work/backend/backend/target/backend-0.0.1-SNAPSHOT.jar
         remote: /home/admin/code/backend/stack/
         host: ${{ secrets.HOST_IP }}
         username: ${{ secrets.HOST_USERNAME }}
