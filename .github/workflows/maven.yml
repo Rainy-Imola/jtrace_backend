@@ -19,16 +19,16 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Generate jar file
-      run: mvn package
+      run: mvn clean package
 
-    - name: copy file via ssh password
+    - name: copy file via ssh key
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: 22
-        source: "pom.xml"
+        source: "./target/backend-0.0.1-SNAPSHOT.jar"
         target: "/home/admin/code/backend/stack/"
 
     - name: executing remote ssh commands using password
