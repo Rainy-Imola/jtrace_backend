@@ -22,6 +22,13 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Generate jar file
       run: mvn clean package
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_IP }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
+        script: whoami
 
 #     - name: Send jar file to remote server using scp
 #       uses: garygrossgarten/github-action-scp@release
