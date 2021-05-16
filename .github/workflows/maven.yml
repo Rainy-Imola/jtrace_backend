@@ -29,7 +29,7 @@ jobs:
       with:
         host: ${{secrets.HOST_IP}}
         username: ${{secrets.HOST_USERNAME}}
-        password: ${{secrets.HOST_PASSWORD}}
+        key: ${{ secrets.KEY }}
         port: 22
         source: ./target/backend-0.0.1-SNAPSHOT.jar
         target: /home/admin/code/backend/stack/
@@ -39,7 +39,7 @@ jobs:
       with:
         host: ${{secrets.HOST_IP}}
         username: ${{secrets.HOST_USERNAME}}
-        password: ${{secrets.HOST_PASSWORD}}
+        key: ${{ secrets.KEY }}
         script: whoami
 
 #     - name: Send jar file to remote server using scp
