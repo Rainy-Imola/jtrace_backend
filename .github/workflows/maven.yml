@@ -32,8 +32,9 @@ jobs:
         username: ${{secrets.HOST_USERNAME}}
         password: ${{secrets.HOST_PASSWORD}}
         port: 22
-        source: /home/runner/work/backend/backend/target/backend-0.0.1-SNAPSHOT.jar
+        source: ./target/backend-0.0.1-SNAPSHOT.jar
         target: /home/admin/code/backend/stack/
+        strip_components: 2
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
