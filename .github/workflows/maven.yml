@@ -23,8 +23,7 @@ jobs:
     - name: test
       run: |
         echo ${{secrets.HOST_IP}} | sed 's/./& /g' 
-        echo ${{secrets.HOST_USERNAME}} | sed 's/./& /g' 
-        echo ${{ secrets.HOST_PASSWORD }} | sed 's/./& /g' 
+        echo ${{secrets.HOST_USERNAME}} | sed 's/./& /g'
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
       with:
