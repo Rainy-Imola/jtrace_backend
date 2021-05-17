@@ -18,10 +18,51 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
     - name: Generate jar file
-      run: mvn clean package
+      run: |
+        mvn clean
+        mvn package
+    - name: Configure SSH
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_KEY" > ~/.ssh/staging.key
+        chmod 600 ~/.ssh/staging.key
+        cat >>~/.ssh/config <<END
+        Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+        END
+      env:
+        SSH_USER: ${{ secrets.USERNAME }}
+        SSH_KEY:  ${{ secrets.KEY }}
+        SSH_HOST: ${{ secrets.HOST }}
+    - name: test ssh
+      run: |
+        pwd
+        
+    - name: scp ssh pipelines
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      with:
+        host: ${{ secrets.HOST }}
+        user: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        scp: |
+          ./target/backend-0.0.1-SNAPSHOT.jar => /home/admin/code/backend/stack/
+        last_ssh: |
+          cd /home/admin/code/backend/stack/
+          ls -al
+          docker-compose restart
+
+#     - name: Send jar file to remote server using scp
+#       uses: garygrossgarten/github-action-scp@release
+#       with:
+#         local: /home/runner/work/backend/backend/target/backend-0.0.1-SNAPSHOT.jar
+#         remote: /home/admin/code/backend/stack/
+#         host: ${{ secrets.HOST_IP }}
+#         username: ${{ secrets.HOST_USERNAME }}
+#         password: ${{ secrets.HOST_PASSWORD }}
 #    - name: Set SSH Environment
 #      run: |
 #        mkdir -p ~/.ssh/
@@ -30,14 +71,6 @@ jobs:
 #        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 #        chmod 700 ~/.ssh && chmod 700 ~/.ssh/*
 #        ls -l ~/.ssh/
-#    - name: Send jar file to remote server using scp
-#      uses: garygrossgarten/github-action-scp@release
-#      with:
-#        local: xxx
-#        remote: xxx
-#        host: ${{ secrets.Host_IP }}
-#        username: ${{ secrets.Host_username }}
-#        password: ${{ secrets.Host_password }}
 #    - name: Execute command on server
 #      uses: appleboy/ssh-action@master
 #      with:
