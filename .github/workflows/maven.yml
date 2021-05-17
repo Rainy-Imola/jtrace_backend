@@ -19,7 +19,9 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Generate jar file
-      run: mvn package
+      run: |
+        mvn clean
+        mvn package
     - name: Configure SSH
       run: |
         mkdir -p ~/.ssh/
@@ -27,19 +29,19 @@ jobs:
         chmod 600 ~/.ssh/staging.key
         cat >>~/.ssh/config <<END
         Host staging
-          HostName $SSH_HOST
-          User $SSH_USER
-          IdentityFile ~/.ssh/staging.key
-          StrictHostKeyChecking no
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
         END
       env:
         SSH_USER: ${{ secrets.USERNAME }}
-        SSH_KEY: ${{ secrets.KEY }}
+        SSH_KEY:  ${{ secrets.KEY }}
         SSH_HOST: ${{ secrets.HOST }}
     - name: test ssh
       run: |
-        ssh staging "cd /home/admin/"
-        ssh staging "ls -al"
+        ssh staging 'pwd'
+        ssh staging 'ls -al'
 
 
 #     - name: Send jar file to remote server using scp
