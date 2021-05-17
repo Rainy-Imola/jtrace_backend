@@ -51,4 +51,28 @@ public class MessageDaoImpl implements MessageDao {
             return null;
         }
     }
+
+    @Override
+    public Message likeMessage(Integer id) {
+        Message message = messageRepository.findById(id).get();
+
+        Integer like = message.getLike();
+        like ++;
+
+        message.setLike(like);
+        messageRepository.save(message);
+        return message;
+    }
+
+    @Override
+    public Message unlikeMessage(Integer id) {
+        Message message = messageRepository.findById(id).get();
+
+        Integer like = message.getLike();
+        like --;
+
+        message.setLike(like);
+        messageRepository.save(message);
+        return message;
+    }
 }

@@ -21,19 +21,23 @@ public class Message implements Serializable {
     private Date date;
     private String picture;
 
-    public Message(Integer id, Integer author, String content, Date date) {
+    private Integer like;
+
+    public Message(Integer id, Integer author, String content, Date date, Integer like) {
         this.id = id;
         this.author = author;
         this.content = content;
         this.date = date;
         this.picture = null;
+        this.like = like;
     }
 
-    public Message(Integer id, Integer author, String content, Date date, String picture) {
+    public Message(Integer id, Integer author, String content, Date date, String picture, Integer like) {
         this.id = id;
         this.author = author;
         this.content = content;
         this.date = date;
         this.picture = picture;
+        this.like = like;
     }
 }

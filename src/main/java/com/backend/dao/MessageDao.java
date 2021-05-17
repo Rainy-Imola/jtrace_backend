@@ -11,4 +11,6 @@ public interface MessageDao {
     Message updateMessage(Message message);
     void deleteMessage(Integer id);
     Message findById(Integer id);
+    Message likeMessage(Integer id);
+    Message unlikeMessage(Integer id);
 }

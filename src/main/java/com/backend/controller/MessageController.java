@@ -74,6 +74,7 @@ public class MessageController {
             jsonObject.put("content", message.getContent());
             jsonObject.put("date", str);
             jsonObject.put("picture", message.getPicture());
+            jsonObject.put("like", message.getLike());
 
             data.add(jsonObject);
         }
@@ -103,11 +104,13 @@ public class MessageController {
         String content = jsonObject.getString("content");
         String picture = (String) jsonObject.get("picture");
         Date date = new Date();
+        Integer like = 0;
 
         Message message = new Message();
         message.setAuthor(author);
         message.setContent(content);
         message.setDate(date);
+        message.setLike(like);
         if (picture != null) {
             message.setPicture(picture);
         }
@@ -145,6 +148,24 @@ public class MessageController {
 
         Logger logger = Logger.getLogger(MessageController.class);
         logger.info("Path: /msgboard/" + id + ", status: success");
+        return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
+    }
+
+    @PostMapping("/like/{id}")
+    public Msg likeMessage(@PathVariable Integer id, @RequestBody JSONObject jsonObject) {
+        Logger logger = Logger.getLogger(MessageController.class);
+
+        Integer like = jsonObject.getInt("like");
+        if (like == 1) {
+            messageService.likeMessage(id);
+        } else if (like == 0) {
+            messageService.unlikeMessage(id);
+        } else {
+            logger.error("Path: /like/" + id + ", status: fail");
+            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
+        }
+
+        logger.info("Path: /like/" + id + ", status: success");
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG);
     }
 }
