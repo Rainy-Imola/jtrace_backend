@@ -38,6 +38,7 @@ jobs:
         SSH_HOST: ${{ secrets.HOST }}
     - name: test ssh
       run: |
+        ssh staging 'cd /home/admin/'
         ssh staging 'ls -al'
     - name: scp ssh pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@latest
