@@ -115,3 +115,13 @@
 2021-05-15 08:35:32  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
 2021-05-15 08:36:11  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
 2021-05-15 08:36:29  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-17 17:06:21  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-17 17:07:15  [ http-nio-8000-exec-3:54638 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-17 17:08:15  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-17 17:09:20  [ http-nio-8000-exec-3:64640 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-17 17:09:26  [ http-nio-8000-exec-4:70440 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-17 17:10:53  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-17 17:11:51  [ http-nio-8000-exec-2:58328 ] - [ INFO ]  Path: /release, status: success, author: 1
+2021-05-17 17:12:46  [ http-nio-8000-exec-3:113276 ] - [ INFO ]  Path: /like/35, status: success
+2021-05-17 17:19:37  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /like/35, status: success
+2021-05-17 17:19:51  [ http-nio-8000-exec-2:13354 ] - [ INFO ]  Path: /like/35, status: success

@@ -50,8 +50,8 @@ public class BackendApplicationTests {
     public void testMessage() throws Exception {
         List<Message> messages_before = messageRepository.findByAuthor(1);
 
-        messageRepository.save(new Message(1, 1, "test message1", new Date()));
-        messageRepository.save(new Message(2, 1, "test message2", new Date()));
+        messageRepository.save(new Message(1, 1, "test message1", new Date(), 0));
+        messageRepository.save(new Message(2, 1, "test message2", new Date(), 0));
 
         List<Message> messages_after = messageRepository.findByAuthor(1);
     }

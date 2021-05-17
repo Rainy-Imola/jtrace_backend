@@ -39,4 +39,14 @@ public class MessageServiceImpl implements MessageService {
         return messageDao.findById(id);
     }
 
+    @Override
+    public Message likeMessage(Integer id) {
+        return messageDao.likeMessage(id);
+    }
+
+    @Override
+    public Message unlikeMessage(Integer id) {
+        return messageDao.unlikeMessage(id);
+    }
+
 }
