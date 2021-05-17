@@ -20,10 +20,9 @@ jobs:
         distribution: 'adopt'
     - name: Generate jar file
       run: mvn package
+      
     - name: scp ssh pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-      env:
-        LASTSSH: "Doing something after copying"
       with:
         host: ${{ secrets.HOST }}
         user: ${{ secrets.USERNAME }}
@@ -31,7 +30,6 @@ jobs:
         scp: |
           ./pom.xml => /home/admin/code/backend/
         last_ssh: |
-          echo $LASTSSH 
           ls -la
 
     - name: executing remote ssh commands using ssh key
