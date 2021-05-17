@@ -48,7 +48,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         user: ${{ secrets.USERNAME }}
-        pass: ${{ secrets.HOST_PASSWORD }}
+        key: ${{ secrets.KEY }}
         scp: |
           ./target/backend-0.0.1-SNAPSHOT.jar => /home/admin/code/backend/stack/
         last_ssh: |
