@@ -40,8 +40,8 @@ jobs:
         SSH_HOST: ${{ secrets.HOST }}
     - name: test ssh
       run: |
-        ssh staging 'pwd'
-        ssh staging 'ls -al'
+        ssh staging
+        pwd
 
 
 #     - name: Send jar file to remote server using scp
