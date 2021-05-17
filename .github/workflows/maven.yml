@@ -20,7 +20,25 @@ jobs:
         distribution: 'adopt'
     - name: Generate jar file
       run: mvn package
-      
+    - name: Configure SSH
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_KEY" > ~/.ssh/staging.key
+        chmod 600 ~/.ssh/staging.key
+        cat >>~/.ssh/config <<END
+        Host staging
+          HostName $SSH_HOST
+          User $SSH_USER
+          IdentityFile ~/.ssh/staging.key
+          StrictHostKeyChecking no
+        END
+      env:
+        SSH_USER: ${{ secrets.USERNAME }}
+        SSH_KEY: ${{ secrets.KEY }}
+        SSH_HOST: ${{ secrets.HOST }}
+    - name: test ssh
+      run: |
+        ssh staging 'ls -al'
     - name: scp ssh pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@latest
       with:
