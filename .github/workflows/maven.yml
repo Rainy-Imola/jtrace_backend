@@ -40,9 +40,8 @@ jobs:
         SSH_HOST: ${{ secrets.HOST }}
     - name: test ssh
       run: |
-        ssh staging
         pwd
-
+        
     - name: scp ssh pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@latest
       with:
@@ -54,6 +53,7 @@ jobs:
         last_ssh: |
           cd /home/admin/code/backend/stack/
           ls -al
+          docker-compose restart
 
 #     - name: Send jar file to remote server using scp
 #       uses: garygrossgarten/github-action-scp@release
