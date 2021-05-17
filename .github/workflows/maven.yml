@@ -43,6 +43,17 @@ jobs:
         ssh staging
         pwd
 
+    - name: scp ssh pipelines
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      with:
+        host: ${{ secrets.HOST }}
+        user: ${{ secrets.USERNAME }}
+        pass: ${{ secrets.HOST_PASSWORD }}
+        scp: |
+          ./target/backend-0.0.1-SNAPSHOT.jar => /home/admin/code/backend/stack/
+        last_ssh: |
+          cd /home/admin/code/backend/stack/
+          ls -al
 
 #     - name: Send jar file to remote server using scp
 #       uses: garygrossgarten/github-action-scp@release
