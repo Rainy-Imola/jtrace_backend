@@ -125,3 +125,5 @@
 2021-05-17 17:12:46  [ http-nio-8000-exec-3:113276 ] - [ INFO ]  Path: /like/35, status: success
 2021-05-17 17:19:37  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /like/35, status: success
 2021-05-17 17:19:51  [ http-nio-8000-exec-2:13354 ] - [ INFO ]  Path: /like/35, status: success
+2021-05-17 21:18:47  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-17 21:19:37  [ http-nio-8000-exec-2:50095 ] - [ INFO ]  Path: /test2/info, status: success
