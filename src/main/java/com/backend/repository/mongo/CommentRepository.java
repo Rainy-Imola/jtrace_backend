@@ -9,6 +9,5 @@ import java.util.List;
 
 @CacheConfig(cacheNames = "comments")
 public interface CommentRepository extends MongoRepository<Comment, Integer> {
-    @Cacheable
     List<Comment> findCommentsByMessage(Integer message);
 }

@@ -11,11 +11,9 @@ import java.util.List;
 @CacheConfig(cacheNames = "friends")
 public interface FriendRepository extends JpaRepository<Friend, Integer> {
 
-    @Cacheable
     @Query(value = "from Friend where username1 = :username order by username2 asc")
     List<Friend> findByUsername1(String username);
 
-    @Cacheable
     Friend findByUsername1AndUsername2(String username1, String username2);
 
     void deleteFriendByUsername1AndUsername2(String username1, String username2);

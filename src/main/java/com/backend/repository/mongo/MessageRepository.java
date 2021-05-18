@@ -9,6 +9,5 @@ import java.util.List;
 
 @CacheConfig(cacheNames = "messages")
 public interface MessageRepository extends MongoRepository<Message, Integer> {
-      @Cacheable
       List<Message> findByAuthor(Integer author);
 }
