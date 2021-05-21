@@ -41,7 +41,7 @@ public class FriendController {
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
     }
 
-    // get friend responses
+    // get friend response
     @GetMapping("/responses/{username}")
     public Msg getResponse(@PathVariable String username) {
         List<FriendRequest> responses = friendRequestService.findByUsername1(username);
