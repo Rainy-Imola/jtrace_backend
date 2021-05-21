@@ -61,6 +61,16 @@ public class UserController {
         }
     }
 
+    // logout
+    @PostMapping("/logout")
+    public void logout(@RequestBody JSONObject jsonObject) {
+        String username = jsonObject.getString("username");
+        User user = userService.findByName(username);
+        user.setStatus(false);
+        userService.addUser(user);
+        return;
+    }
+
     // Get all users
     @GetMapping("/getUsers")
     public List<User> getUsers() { return userService.getUsers(); }

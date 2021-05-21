@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class MessageController {
             JSONArray jsonArray = JSONArray.fromObject(data);
 
             logger.info("Path: /msgboard/" + author + ", status: success");
-            return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, jsonArray); // Todo
+            return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, jsonArray);
         } else {
             logger.error("Path: /msgboard/" + author + ", status: fail!");
             return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
@@ -90,9 +91,20 @@ public class MessageController {
     public Msg getMessage(@PathVariable Integer id) {
         Message message = messageService.findById(id);
         List<Comment> comments = commentService.getComments(id);
+        List<JSONObject> jsonList = new ArrayList<>();
+        for (Comment comment: comments) {
+            JSONObject object = new JSONObject();
+            Integer author_id = comment.getAuthor();
+            String authorName = userService.findById(author_id).getUsername();
+            object.put("author", authorName);
+            object.put("content", comment.getContent());
+            object.put("date", comment.getDate());
+
+            jsonList.add(object);
+        }
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("message", (Message) message);
-        jsonObject.put("comment", (List<Comment>) comments);
+        jsonObject.put("comment", (List<JSONObject>) jsonList);
         JSONArray data = JSONArray.fromObject(jsonObject);
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
     }
