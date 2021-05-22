@@ -5,6 +5,7 @@ import com.backend.entity.Message;
 import com.backend.repository.mongo.MessageRepository;
 import com.backend.utils.mongoUtils.MongoAutoIdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public List<Message> getMessages() {
-        return messageRepository.findAll();
+        return messageRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
     }
 
     @Override

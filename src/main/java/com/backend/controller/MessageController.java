@@ -54,12 +54,15 @@ public class MessageController {
 
     // get messages
     @GetMapping("/")
-    public Msg getMessages() {
+    public Msg getMessages(@RequestBody JSONObject jsonObject) {
+        Integer number = jsonObject.getInt("num");
         List<Message> messages = messageService.getMessages();
+
+        Integer count = Math.min(messages.size(), number*10);
 
         JSONArray data = new JSONArray();
         Integer i = 0;
-        for (i = 0; i < messages.size(); i++) {
+        for (i = 0; i < count; i++) {
             Message message = messages.get(i);
             Integer authorId = message.getAuthor();
             String authorName = userService.findById(authorId).getUsername();
@@ -69,15 +72,15 @@ public class MessageController {
 
             String str = sdf.format(date);
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("id", message.getId());
-            jsonObject.put("author", authorName);
-            jsonObject.put("content", message.getContent());
-            jsonObject.put("date", str);
-            jsonObject.put("picture", message.getPicture());
-            jsonObject.put("like", message.getLike());
+            JSONObject object = new JSONObject();
+            object.put("id", message.getId());
+            object.put("author", authorName);
+            object.put("content", message.getContent());
+            object.put("date", str);
+            object.put("picture", message.getPicture());
+            object.put("like", message.getLike());
 
-            data.add(jsonObject);
+            data.add(object);
         }
 
         Logger logger = Logger.getLogger(MessageController.class);
