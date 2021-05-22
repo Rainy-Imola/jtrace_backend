@@ -60,6 +60,14 @@ public class WebSocketServerComponent {
     // Open a connection
     @OnOpen
     public void onOpen(Session session, @PathParam(value = "username") String username) {
+        Session sessionBefore = sessionPools.get(username);
+        if (sessionBefore != null) {
+            try {
+                sessionBefore.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         sessionPools.put(username, session);
         addOnlineCount();
 
@@ -73,7 +81,7 @@ public class WebSocketServerComponent {
 
     // Close a connection
     @OnClose
-    public void onClose(@PathParam(value = "username") String username) {
+    public void onClose(@PathParam(value = "username") String username) throws IOException {
         sessionPools.remove(username);
         subOnlineCount();
 

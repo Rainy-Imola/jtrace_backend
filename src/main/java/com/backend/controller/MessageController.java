@@ -6,6 +6,7 @@ import com.backend.entity.User;
 import com.backend.service.CommentService;
 import com.backend.service.MessageService;
 import com.backend.service.UserService;
+import com.backend.utils.RandomUtils.RandomSet;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
 import net.sf.json.JSONArray;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -58,8 +60,9 @@ public class MessageController {
         List<Message> messages = messageService.getMessages();
 
         JSONArray data = new JSONArray();
-        Integer i = 0;
-        for (i = 0; i < messages.size(); i++) {
+        HashSet<Integer> set = new HashSet<>();
+        RandomSet.randomSet(messages.size(), 20, set);
+        for (Integer i: set) {
             Message message = messages.get(i);
             Integer authorId = message.getAuthor();
             String authorName = userService.findById(authorId).getUsername();
@@ -69,15 +72,15 @@ public class MessageController {
 
             String str = sdf.format(date);
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("id", message.getId());
-            jsonObject.put("author", authorName);
-            jsonObject.put("content", message.getContent());
-            jsonObject.put("date", str);
-            jsonObject.put("picture", message.getPicture());
-            jsonObject.put("like", message.getLike());
+            JSONObject object = new JSONObject();
+            object.put("id", message.getId());
+            object.put("author", authorName);
+            object.put("content", message.getContent());
+            object.put("date", str);
+            object.put("picture", message.getPicture());
+            object.put("like", message.getLike());
 
-            data.add(jsonObject);
+            data.add(object);
         }
 
         Logger logger = Logger.getLogger(MessageController.class);
