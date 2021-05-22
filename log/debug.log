@@ -141,3 +141,33 @@
 2021-05-22 15:29:02  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/, status: success
 2021-05-22 15:32:27  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/, status: success
 2021-05-22 15:32:39  [ http-nio-8000-exec-2:12253 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:01:55  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-22 16:03:02  [ http-nio-8000-exec-7:66957 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-22 16:05:38  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:05:49  [ http-nio-8000-exec-2:11403 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-22 16:05:50  [ http-nio-8000-exec-3:12402 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:05:57  [ http-nio-8000-exec-4:19683 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:06:01  [ http-nio-8000-exec-5:23256 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-22 16:06:07  [ http-nio-8000-exec-6:29496 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:09:56  [ http-nio-8000-exec-2:258541 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-22 16:09:57  [ http-nio-8000-exec-3:259554 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:10:02  [ http-nio-8000-exec-4:264762 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:11:48  [ http-nio-8000-exec-9:369986 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 16:34:36  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /msgboard/page/3, status: success
+2021-05-22 16:34:59  [ http-nio-8000-exec-2:23380 ] - [ INFO ]  Path: /msgboard/page/3, status: success
+2021-05-22 16:35:36  [ http-nio-8000-exec-5:60129 ] - [ INFO ]  Path: /msgboard/page/1, status: success
+2021-05-22 16:35:45  [ http-nio-8000-exec-6:69266 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-22 16:35:46  [ http-nio-8000-exec-7:70331 ] - [ INFO ]  Path: /msgboard/page/1, status: success
+2021-05-22 16:35:51  [ http-nio-8000-exec-8:75081 ] - [ INFO ]  Path: /msgboard/page/2, status: success
+2021-05-22 16:36:27  [ http-nio-8000-exec-3:111718 ] - [ INFO ]  Path: /msgboard/page/1, status: success
+2021-05-22 16:37:00  [ http-nio-8000-exec-4:144874 ] - [ INFO ]  Path: /msgboard/page/2, status: success
+2021-05-22 16:37:01  [ http-nio-8000-exec-6:145641 ] - [ INFO ]  Path: /msgboard/page/1, status: success
+2021-05-22 16:37:28  [ http-nio-8000-exec-7:172632 ] - [ INFO ]  Path: /msgboard/page/2, status: success
+2021-05-22 16:41:49  [ http-nio-8000-exec-1:432911 ] - [ INFO ]  Path: /msgboard/page/1, status: success
+2021-05-22 16:41:50  [ http-nio-8000-exec-9:434760 ] - [ INFO ]  Path: /msgboard/page/3, status: success
+2021-05-22 17:02:00  [ http-nio-8000-exec-4:0 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-22 17:02:52  [ http-nio-8000-exec-9:52440 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 17:03:04  [ http-nio-8000-exec-10:64357 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 17:03:51  [ http-nio-8000-exec-3:111068 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 17:06:02  [ http-nio-8000-exec-5:242399 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-22 17:06:16  [ http-nio-8000-exec-8:256229 ] - [ INFO ]  Path: /msgboard/, status: success
