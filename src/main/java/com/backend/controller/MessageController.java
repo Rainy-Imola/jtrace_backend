@@ -6,7 +6,7 @@ import com.backend.entity.User;
 import com.backend.service.CommentService;
 import com.backend.service.MessageService;
 import com.backend.service.UserService;
-import com.backend.utils.RandomUtils.RandomSet;
+import com.backend.utils.RandomUtils.RandomList;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
 import net.sf.json.JSONArray;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -60,9 +59,8 @@ public class MessageController {
         List<Message> messages = messageService.getMessages();
 
         JSONArray data = new JSONArray();
-        HashSet<Integer> set = new HashSet<>();
-        RandomSet.randomSet(messages.size(), 20, set);
-        for (Integer i: set) {
+        List<Integer> randomList = RandomList.randomList(0, messages.size(), 20);
+        for (Integer i: randomList) {
             Message message = messages.get(i);
             Integer authorId = message.getAuthor();
             String authorName = userService.findById(authorId).getUsername();
