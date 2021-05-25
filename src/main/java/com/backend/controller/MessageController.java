@@ -66,17 +66,13 @@ public class MessageController {
             Message message = messages.get(i);
             Integer authorId = message.getAuthor();
             String authorName = userService.findById(authorId).getUsername();
-
-            Date date = message.getDate();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss.SSSXXX");
-
-            String str = sdf.format(date);
+            String date = message.getDate();
 
             JSONObject object = new JSONObject();
             object.put("id", message.getId());
             object.put("author", authorName);
             object.put("content", message.getContent());
-            object.put("date", str);
+            object.put("date", date);
             object.put("picture", message.getPicture());
             object.put("like", message.getLike());
 
@@ -135,12 +131,14 @@ public class MessageController {
         String content = jsonObject.getString("content");
         String picture = (String) jsonObject.get("picture");
         Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
         Integer like = 0;
 
         Message message = new Message();
         message.setAuthor(author);
         message.setContent(content);
-        message.setDate(date);
+        message.setDate(time);
         message.setLike(like);
         if (picture != null) {
             message.setPicture(picture);
@@ -159,9 +157,11 @@ public class MessageController {
         String content = jsonObject.getString("content");
         String picture = (String) jsonObject.get("picture");
         Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
 
         message.setContent(content);
-        message.setDate(date);
+        message.setDate(time);
         if (picture != null) {
             message.setPicture(picture);
         }

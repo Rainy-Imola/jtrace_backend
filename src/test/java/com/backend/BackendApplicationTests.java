@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cache.CacheManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -78,8 +79,11 @@ public class BackendApplicationTests {
     public void testMessageRepo() throws Exception {
         // test findByAuthor
         List<Message> messages_before = messageRepository.findByAuthor(1);
-        messageRepository.save(new Message(1, 1, "test message1", new Date(), 0));
-        messageRepository.save(new Message(2, 1, "test message2", new Date(), 0));
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
+        messageRepository.save(new Message(1, 1, "test message1", time, 0));
+        messageRepository.save(new Message(2, 1, "test message2", time, 0));
         List<Message> messages_after = messageRepository.findByAuthor(1);
 
         Assert.assertEquals(messages_before.size() + 2, messages_after.size());
@@ -92,8 +96,11 @@ public class BackendApplicationTests {
     public void testCommentRepo() throws Exception {
         // test findCommentByMessage
         List<Comment> comments_before = commentRepository.findCommentsByMessage(100);
-        Comment comment1 = new Comment(1, 100, "test comment1", new Date(), 100);
-        Comment comment2 = new Comment(2, 100, "test comment1", new Date(), 100);
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
+        Comment comment1 = new Comment(1, 100, "test comment1", time, 100);
+        Comment comment2 = new Comment(2, 100, "test comment1", time, 100);
         commentRepository.save(comment1);
         commentRepository.save(comment2);
         List<Comment> comments_after = commentRepository.findCommentsByMessage(100);

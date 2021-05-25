@@ -21,11 +21,11 @@ public class Comment implements Serializable {
 
     private Integer author;
     private String content;
-    private Date date;
+    private String date;
 
     private Integer message;
 
-    public Comment(Integer id, Integer author, String content, Date date, Integer message) {
+    public Comment(Integer id, Integer author, String content, String date, Integer message) {
         this.id = id;
         this.author = author;
         this.content = content;
