@@ -1,13 +1,7 @@
 package com.backend.controller;
 
-import com.backend.entity.Comment;
-import com.backend.entity.Message;
-import com.backend.entity.MessageLike;
-import com.backend.entity.User;
-import com.backend.service.CommentService;
-import com.backend.service.MessageLikeService;
-import com.backend.service.MessageService;
-import com.backend.service.UserService;
+import com.backend.entity.*;
+import com.backend.service.*;
 import com.backend.utils.RandomUtils.RandomList;
 import com.backend.utils.msgUtils.Msg;
 import com.backend.utils.msgUtils.MsgUtils;
@@ -37,6 +31,9 @@ public class MessageController {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private ReplyService replyService;
 
     // get messages by author
     @GetMapping()
@@ -108,9 +105,12 @@ public class MessageController {
             JSONObject object = new JSONObject();
             Integer author_id = comment.getAuthor();
             String authorName = userService.findById(author_id).getUsername();
+            List<Reply> replies = replyService.getReply(comment.getId());
+            object.put("id", comment.getId());
             object.put("author", authorName);
             object.put("content", comment.getContent());
             object.put("date", comment.getDate());
+            object.put("reply", replies);
 
             jsonList.add(object);
         }
