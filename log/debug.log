@@ -183,3 +183,7 @@
 2021-05-23 15:39:17  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
 2021-05-23 15:40:18  [ http-nio-8000-exec-3:61606 ] - [ INFO ]  Path: /request, status: success
 2021-05-23 15:41:19  [ http-nio-8000-exec-5:122708 ] - [ INFO ]  Path: /request, status: success
+2021-05-24 20:44:05  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /login, status: success, username: test
+2021-05-24 20:44:47  [ http-nio-8000-exec-3:42244 ] - [ INFO ]  Path: /msgboard/, status: success
+2021-05-24 20:47:26  [ http-nio-8000-exec-7:200805 ] - [ INFO ]  Path: /like/38, status: success
+2021-05-24 20:57:16  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /like/38, status: success

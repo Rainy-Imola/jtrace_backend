@@ -2,8 +2,10 @@ package com.backend.controller;
 
 import com.backend.entity.Comment;
 import com.backend.entity.Message;
+import com.backend.entity.MessageLike;
 import com.backend.entity.User;
 import com.backend.service.CommentService;
+import com.backend.service.MessageLikeService;
 import com.backend.service.MessageService;
 import com.backend.service.UserService;
 import com.backend.utils.RandomUtils.RandomList;
@@ -26,6 +28,9 @@ public class MessageController {
 
     @Autowired
     private MessageService messageService;
+
+    @Autowired
+    private MessageLikeService messageLikeService;
 
     @Autowired
     private UserService userService;
@@ -54,8 +59,8 @@ public class MessageController {
     }
 
     // get messages
-    @GetMapping("/")
-    public Msg getMessages() {
+    @GetMapping("/{user}")
+    public Msg getMessages(@PathVariable Integer user) {
         List<Message> messages = messageService.getMessages();
 
         JSONArray data = new JSONArray();
@@ -78,6 +83,12 @@ public class MessageController {
             object.put("picture", message.getPicture());
             object.put("like", message.getLike());
 
+            Integer accept = 0;
+            if (messageLikeService.findByUserAndMessage(user, message.getId()) != null) {
+                accept = 1;
+            }
+            object.put("accept", accept);
+
             data.add(object);
         }
 
@@ -88,8 +99,8 @@ public class MessageController {
     }
 
     // get message
-    @GetMapping("/{id}")
-    public Msg getMessage(@PathVariable Integer id) {
+    @GetMapping("/{id}/{user}")
+    public Msg getMessage(@PathVariable Integer id, @PathVariable Integer user) {
         Message message = messageService.findById(id);
         List<Comment> comments = commentService.getComments(id);
         List<JSONObject> jsonList = new ArrayList<>();
@@ -103,8 +114,15 @@ public class MessageController {
 
             jsonList.add(object);
         }
+
+        Integer accept = 0;
+        if (messageLikeService.findByUserAndMessage(user, id) != null) {
+            accept = 1;
+        }
+
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("message", (Message) message);
+        jsonObject.put("accept", (Integer) accept);
         jsonObject.put("comment", (List<JSONObject>) jsonList);
         JSONArray data = JSONArray.fromObject(jsonObject);
         return MsgUtils.makeMsg(MsgUtils.SUCCESS, MsgUtils.SUCCESS_MSG, data);
@@ -169,10 +187,17 @@ public class MessageController {
         Logger logger = Logger.getLogger(MessageController.class);
 
         Integer like = jsonObject.getInt("like");
+        Integer user = jsonObject.getInt("user");
         if (like == 1) {
             messageService.likeMessage(id);
+
+            MessageLike messageLike = new MessageLike();
+            messageLike.setMessage(id);
+            messageLike.setUser(user);
+            messageLikeService.addCommentLike(messageLike);
         } else if (like == 0) {
             messageService.unlikeMessage(id);
+            messageLikeService.deleteByUserAndMessage(user, id);
         } else {
             logger.error("Path: /like/" + id + ", status: fail");
             return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
