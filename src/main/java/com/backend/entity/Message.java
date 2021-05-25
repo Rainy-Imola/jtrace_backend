@@ -18,12 +18,12 @@ public class Message implements Serializable {
 
     private Integer author;
     private String content;
-    private Date date;
+    private String date;
     private String picture;
 
     private Integer like;
 
-    public Message(Integer id, Integer author, String content, Date date, Integer like) {
+    public Message(Integer id, Integer author, String content, String date, Integer like) {
         this.id = id;
         this.author = author;
         this.content = content;
@@ -32,7 +32,7 @@ public class Message implements Serializable {
         this.like = like;
     }
 
-    public Message(Integer id, Integer author, String content, Date date, String picture, Integer like) {
+    public Message(Integer id, Integer author, String content, String date, String picture, Integer like) {
         this.id = id;
         this.author = author;
         this.content = content;

@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
@@ -27,11 +28,13 @@ public class CommentController {
         Integer author = jsonObject.getInt("author");
         String content = jsonObject.getString("content");
         Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
 
         Comment comment = new Comment();
         comment.setAuthor(author);
         comment.setContent(content);
-        comment.setDate(date);
+        comment.setDate(time);
         comment.setMessage(message_id);
 
         commentService.releaseComment(comment);
@@ -46,10 +49,12 @@ public class CommentController {
         Comment comment = commentService.findById(id);
 
         Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
         String content = jsonObject.getString("content");
 
         comment.setContent(content);
-        comment.setDate(date);
+        comment.setDate(time);
 
         commentService.updateComment(comment);
 
