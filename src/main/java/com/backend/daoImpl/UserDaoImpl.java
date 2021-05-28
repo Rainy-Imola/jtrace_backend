@@ -51,11 +51,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Integer getUserStatus(String username) {
         User user = userRepository.findByName(username);
-        if (user.getStatus() == null) {
-            System.out.println("null status");
-        } else {
-            System.out.println("status");
-        }
         if (user.getStatus()) {
             return 1;
         } else {
