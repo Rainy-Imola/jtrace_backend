@@ -59,8 +59,4 @@
 - websocket
 
 #### Under construction
-- GitHub Actions
 - Kubernetes
-
-# Todo list
-- [ ] 传输信息加密
