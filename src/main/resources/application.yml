@@ -11,6 +11,6 @@ fastdep:
       message:
         path: /msgboard/**/**
         role: jwt
-    expireTime = 7200000000
+    expireTime: 7200000000
     secret: "6Dx8SIuaHXJYnpsG18SSpjPs50lZcT52"
 # 可参考连接：https://fastdep.louislivi.com/#/module/fastdep-shiro-jwt
