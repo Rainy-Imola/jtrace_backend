@@ -87,7 +87,7 @@ public class UserController {
 
         if (!password1.equals(password2)) {
             logger.error("Path: /users/register, status: fail, error msg: password1 != password2");
-            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
+            return MsgUtils.makeMsg(MsgUtils.PASSWORD_ERROR, MsgUtils.ERROR_MSG);
         }
 
         User user0 = userService.findByEmail(email);

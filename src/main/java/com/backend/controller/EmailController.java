@@ -35,7 +35,7 @@ public class EmailController {
 
         String email = jsonObject.getString("email");
         if (!email.matches(standardEmail)) {
-            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.EMAIL_ERROR_MSG);
+            return MsgUtils.makeMsg(MsgUtils.EMAIL_FORMAT_ERROR, MsgUtils.EMAIL_ERROR_MSG);
         }
 
         User user = userService.findByEmail(email);
@@ -43,7 +43,7 @@ public class EmailController {
 
         if (user != null) {
             logger.error("Path: /email/sendemail, status: failed, error: email has been used");
-            return MsgUtils.makeMsg(MsgUtils.ERROR, MsgUtils.ERROR_MSG);
+            return MsgUtils.makeMsg(MsgUtils.EMAIL_REPEAT_ERROR, MsgUtils.ERROR_MSG);
         }
 
         data = mailService.sendMimeMail(email);

@@ -6,6 +6,9 @@ import net.sf.json.JSONObject;
 public class MsgUtils {
     public static final Integer SUCCESS  = 0;
     public static final Integer ERROR = -1;
+    public static final Integer PASSWORD_ERROR = -99;
+    public static final Integer EMAIL_REPEAT_ERROR = -98;
+    public static final Integer EMAIL_FORMAT_ERROR = -97;
     public static final Integer LOGIN_USER_ERROR = -100;
     public static final Integer NOT_LOGGED_IN_ERROR = -101;
     public static final Integer REGISTER_ERROR = -200;
