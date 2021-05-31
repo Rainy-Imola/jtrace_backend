@@ -17,6 +17,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from User u")
     List<User> getUsers();
 
+    @Cacheable(key="#p0")
     @Query(value = "from User where username = :username")
     User findByName(@Param("username") String username);
 

@@ -58,7 +58,10 @@ public class BackendApplicationTests {
 
         // test findByName
         User user3 = userRepository.findByName("test user1");
+        System.out.println("test user1: " + user3.getUsername());
         Assert.assertNotNull(user3);
+        User user7 = userRepository.findByName("test user1");
+        System.out.println("test user1: " + user7.getUsername());
         User user4 = userRepository.findByName("test checkByName");
         Assert.assertNull(user4);
 

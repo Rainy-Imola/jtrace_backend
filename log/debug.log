@@ -192,3 +192,4 @@
 2021-05-25 21:00:53  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /login, status: success, username: test
 2021-05-25 21:01:47  [ http-nio-8000-exec-3:53860 ] - [ INFO ]  Path: /msgboard/, status: success
 2021-05-28 19:54:34  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-28 20:30:11  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
