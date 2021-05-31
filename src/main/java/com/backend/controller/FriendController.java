@@ -178,6 +178,7 @@ public class FriendController {
         if (friend == null) {
             return 0;
         } else {
+            System.out.println(friend.getUsername1());
             return 1;
         }
     }

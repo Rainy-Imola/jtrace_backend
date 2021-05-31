@@ -196,3 +196,18 @@
 2021-05-31 09:24:53  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /login, status: fail, username: test password: test
 2021-05-31 09:26:25  [ http-nio-8000-exec-3:91527 ] - [ INFO ]  Path: /login, status: success, username: test
 2021-05-31 09:39:42  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /test/info, status: success
+2021-05-31 09:54:36  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-05-31 10:17:40  [ http-nio-8000-exec-1:1 ] - [ INFO ]  Path: /friends/add, status: success, friends: test, test2
+2021-05-31 10:40:02  [ http-nio-8000-exec-3:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-05-31 10:40:33  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-05-31 10:42:47  [ http-nio-8000-exec-1:1 ] - [ INFO ]  Path: /friends/del, status: success
+2021-05-31 10:43:04  [ http-nio-8000-exec-3:17359 ] - [ INFO ]  Path: /friends/add, status: success, friends: test, test2
+2021-05-31 10:43:58  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /friends/add, status: success, friends: test, test2
+2021-05-31 10:44:19  [ http-nio-8000-exec-4:20986 ] - [ INFO ]  Path: /friends/del, status: success
+2021-05-31 10:45:27  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /friends/add, status: success, friends: test, test2
+2021-05-31 10:48:23  [ http-nio-8000-exec-3:0 ] - [ INFO ]  Path: /friends/add, status: success, friends: test, test2
+2021-05-31 10:48:33  [ http-nio-8000-exec-4:10410 ] - [ INFO ]  Path: /friends/del, status: success
+2021-05-31 10:48:47  [ http-nio-8000-exec-6:23824 ] - [ INFO ]  Path: /friends/add, status: success, friends: test, test2
+2021-05-31 10:50:38  [ http-nio-8000-exec-9:134594 ] - [ INFO ]  Path: /friends/del, status: success
+2021-05-31 10:50:59  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/add, status: success, friends: test, test2
+2021-05-31 10:51:06  [ http-nio-8000-exec-3:7506 ] - [ INFO ]  Path: /friends/del, status: success
