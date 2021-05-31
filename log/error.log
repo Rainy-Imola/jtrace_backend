@@ -7,3 +7,4 @@
 2021-05-07 14:32:49  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /email/sendemail, status: failed, error: email has been used
 2021-05-12 13:49:46  [ http-nio-8000-exec-5:309787 ] - [ ERROR ]  Path: /register, status: fail, username: root Error: email has been taken
 2021-05-12 13:49:57  [ http-nio-8000-exec-6:321644 ] - [ ERROR ]  Path: /register, status: fail, username: root Error: email has been taken
+2021-05-31 09:24:53  [ http-nio-8000-exec-1:0 ] - [ ERROR ]  Path: /login, status: fail, username: test password: test

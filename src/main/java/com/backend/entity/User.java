@@ -3,11 +3,9 @@ package com.backend.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,8 +20,8 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String email;
-    @ElementCollection
-    private List<String> hobby;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> hobby = new ArrayList<>();
     private String constellation;
     private String avatar;
 

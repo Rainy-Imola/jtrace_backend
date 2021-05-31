@@ -124,7 +124,6 @@ public class UserController {
     }
 
     // Get user profile
-
     @GetMapping("/{username}/info")
     public Msg userInfo(@PathVariable String username) {
         User user = userService.findByName(username);
