@@ -11,10 +11,10 @@ import java.util.List;
 @CacheConfig(cacheNames = "friends")
 public interface FriendService {
     List<Friend> findByUsername(String username);
-    //@Cacheable(value = "friends")
+    @Cacheable(value = "friends")
     Friend findByUsername1AndUsername2(String username1, String username2);
-    //@CacheEvict(value = "friends", allEntries = true)
+    @CacheEvict(value = "friends", allEntries = true)
     void deleteFriend(String username1, String username2);
-    //@CachePut(value = "friends")
+    @CachePut(value = "friends")
     void addFriend(Friend friend);
 }

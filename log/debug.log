@@ -241,3 +241,10 @@
 2021-06-01 08:39:11  [ http-nio-8000-exec-5:141810 ] - [ INFO ]  Path: /friends/del, status: success
 2021-06-01 08:40:51  [ http-nio-8000-exec-7:240913 ] - [ INFO ]  Path: /friends/del, status: success
 2021-06-01 08:42:09  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:51:11  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:55:46  [ http-nio-8000-exec-9:274773 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:57:10  [ http-nio-8000-exec-4:359021 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 09:08:02  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 09:08:51  [ http-nio-8000-exec-7:48591 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 09:49:49  [ http-nio-8000-exec-2:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 10:05:40  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /request, status: success
