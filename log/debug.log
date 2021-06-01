@@ -223,3 +223,21 @@
 2021-05-31 16:38:07  [ http-nio-8000-exec-10:222298 ] - [ INFO ]  Path: /friends/add, status: success, friends: obilly, wxz
 2021-05-31 16:38:10  [ http-nio-8000-exec-1:225422 ] - [ INFO ]  Path: /friends/del, status: success
 2021-05-31 16:38:17  [ http-nio-8000-exec-3:231866 ] - [ INFO ]  Path: /friends/add, status: success, friends: obilly, wxz
+2021-06-01 00:30:53  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/, status: success
+2021-06-01 00:31:13  [ http-nio-8000-exec-2:19615 ] - [ INFO ]  Path: /request, status: success
+2021-06-01 00:32:05  [ http-nio-8000-exec-3:72296 ] - [ INFO ]  Path: /request, status: success
+2021-06-01 00:36:42  [ http-nio-8000-exec-10:349472 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 00:37:22  [ http-nio-8000-exec-2:388609 ] - [ INFO ]  Path: /request, status: success
+2021-06-01 08:26:22  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /request, status: success
+2021-06-01 08:26:26  [ http-nio-8000-exec-2:3903 ] - [ INFO ]  Path: /request, status: success
+2021-06-01 08:29:34  [ http-nio-8000-exec-3:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:31:55  [ http-nio-8000-exec-10:140603 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:32:00  [ http-nio-8000-exec-1:146013 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:32:50  [ http-nio-8000-exec-3:196067 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:33:38  [ http-nio-8000-exec-7:244266 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:36:50  [ http-nio-8000-exec-8:0 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:37:34  [ http-nio-8000-exec-2:43993 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:37:55  [ http-nio-8000-exec-8:65022 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:39:11  [ http-nio-8000-exec-5:141810 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:40:51  [ http-nio-8000-exec-7:240913 ] - [ INFO ]  Path: /friends/del, status: success
+2021-06-01 08:42:09  [ http-nio-8000-exec-1:0 ] - [ INFO ]  Path: /friends/del, status: success
