@@ -95,16 +95,18 @@ public class FriendController {
         friendRequest.setStatus(status);
 
         if (status == 1) {  // if accept
-            Friend friend1 = new Friend();
-            friend1.setUsername1(username1);
-            friend1.setUsername2(username2);
+            if (friendService.findByUsername1AndUsername2(username1, username2) == null) {
+                Friend friend1 = new Friend();
+                friend1.setUsername1(username1);
+                friend1.setUsername2(username2);
 
-            Friend friend2 = new Friend();
-            friend2.setUsername1(username2);
-            friend2.setUsername2(username1);
+                Friend friend2 = new Friend();
+                friend2.setUsername1(username2);
+                friend2.setUsername2(username1);
 
-            friendService.addFriend(friend1);
-            friendService.addFriend(friend2);
+                friendService.addFriend(friend1);
+                friendService.addFriend(friend2);
+            }
         }
 
         friendRequestService.setStatus(friendRequest);
@@ -174,8 +176,9 @@ public class FriendController {
         String username1 = jsonObject.getString("username1");
         String username2 = jsonObject.getString("username2");
 
-        Friend friend = friendService.findByUsername1AndUsername2(username1, username2);
-        if (friend == null) {
+        Friend friend1 = friendService.findByUsername1AndUsername2(username1, username2);
+        Friend friend2 = friendService.findByUsername1AndUsername2(username2, username1);
+        if (friend1 == null && friend2 == null) {
             return 0;
         } else {
             return 1;
